@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Staff Member – Sara Mohammed</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ==================== Sara-about us Styles ==================== */
+        :root {
+        --blue-900: #2F476D;
+        --blue-100: #eef3fc;
+        --text: #0c0c0c;
+        --muted: #6e6e6e;
+        --border: #cfd5de;
+        --card-bg: #A8B288;
+        --card-name-bg: #183D16;
+        --page-bg: #F8F8F0;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        * {
+        box-sizing: border-box;
+        font-family: "Cormorant Garamond", serif !important;
+        }
+
+        html, body {
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        font-weight: 400;
+        font-family: "Cormorant Garamond", serif;
+        background: #EEEDE7;
+        color: #0c0c0c;
+        }
+
+        img {
+        max-width: 100%;
+        display: block;
+        }
+
+        .container {
+        width: min(1100px, 92%);
+        margin: 0 auto;
+        }
+
+        /* ===== TEAM CARDS ===== */
+        .team-grid-wrapper {
+        width: min(1100px, 92%);
+        margin: 0 auto 40px;
+        padding: 10px 0 30px;
+        }
+
+        /* Team Member Cards  */
+        .team-grid-scroll {
+        margin-top: 5%;
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        }
+
+        .member-card {
+        flex: 0 0 260px;
+        background-color: #f8f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: center;
+        padding: 16px;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        overflow: hidden;
+        }
+
+        .member-card:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+        }
+
+        .member-card img.avatar {
+        width: 100%;
+        height: 280px;
+        border-radius: 8px;
+        object-fit: cover;
+        }
+
+        .member-card h3 {
+        font-size: 1.4em;
+        margin-top: 15px;
+        }
+
+        .member-card p {
+        font-size: 1em;
+        color: #888;
+        }
+
+        .member-name-link {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 4px 12px;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 999px;
+        background: #d9d9d9;
+        color: #4a4a4a;
+        text-decoration: none;
+        transition: 0.3s;
+        }
+
+        .member-name-link:hover {
+        background: #c5c5c5;
+        }
+
+        /* ===== JOIN OUR TEAM BOX ===== */
+        .form-card {
+        background-color: #A8B68B;
+        border-radius: 10px;
+        padding: 22px;
+        max-width: 760px;
+        margin: 20px auto 40px;
+        box-shadow: 0 2px 6px rgba(0,0,0,.06);
+        }
+
+        .form-card input,
+        .form-card select,
+        .form-card textarea {
+        width: 100%;
+        border: 1px solid #2F4B3A;
+        border-radius: 8px;
+        padding: 10px 12px;
+        font: inherit;
+        color: #1F1F1F;
+        background: #F3F5E7;
+        }
+
+        .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        }
+
+        .full {
+        grid-column: 1 / span 2;
+        }
+
+        .btn-dark {
+        display: block;
+        background-color: rgb(47, 75, 58);
+        color: rgb(243, 245, 231);
+        font-weight: 600;
+        padding: 10px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        margin: 10px auto;
+        }
+
+        .btn-dark:hover {
+        background-color: rgb(39, 61, 47);
+        }
+
+        /* ===== HORIZONTAL TEAM CARDS ===== */
+        .team-grid-wrapper {
+        width: 100%;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        padding: 20px 0 40px;
+        margin-bottom: 60px;
+        scrollbar-width: thin;
+        scrollbar-color: #999 #f0f0f0;
+        }
+
+        .team-grid-wrapper::-webkit-scrollbar {
+        height: 8px;
+        }
+
+        .team-grid-wrapper::-webkit-scrollbar-track {
+        background: #f0f0f0;
+        border-radius: 10px;
+        }
+
+        .team-grid-wrapper::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 10px;
+        }
+
+        .team-grid-wrapper::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
+        }
+
+        .team-grid-scroll {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 60px;
+        padding: 10px 40px;
+        width: 150%;
+        }
+
+        .member-card {
+        background: #f8f9f9;
+        padding: 15px 20px;
+        border-radius: 16px;
+        width: 200px;
+        text-align: center;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+        }
+
+        .member-card img.avatar {
+        width: 100%;
+        height: 180px;
+        border-radius: 8px;
+        object-fit: cover;
+        margin-bottom: 10px;
+        }
+
+        .member-name-link {
+        display: inline-block;
+        background: #d9d9d9;
+        color: #4a4a4a;
+        border-radius: 20px;
+        padding: 6px 18px;
+        text-decoration: none;
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+        }
+
+        .member-name-link:hover {
+        filter: brightness(0.88);
+        }
+
+        /* ===== SUBMIT BUTTON FIX ===== */
+        .btn-light {
+        background: #2F476D;
+        color: #fff;
+        font-weight: 600;
+        padding: 12px 48px;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        display: inline-block;
+        transition: background 0.3s ease;
+        }
+
+        .btn-light:hover {
+        background: #1d3150;
+        }
+
+        .actions.center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        }
+
+        .join-form input[type="submit"] {
+        background: var(--blue-100) !important;
+        color: #1d3150 !important;
+        font-weight: 600 !important;
+        padding: 12px 48px !important;
+        border-radius: 999px !important;
+        border: none !important;
+        cursor: pointer !important;
+        display: inline-block !important;
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: 18px !important;
+        line-height: 1.2 !important;
+        text-align: center !important;
+        width: auto !important;
+        min-width: 200px;
+        background-image: none !important;
+        }
+
+        .join-form input[type="submit"]:hover {
+        background: #1d3150 !important;
+        }
+
+        .actions.center {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-top: 10px !important;
+        }
+
+        .profile-table {
+        border-collapse: collapse;
+        width: 100%;
+        table-layout: fixed;
+        }
+
+        .profile-table th {
+        background-color: #fff;
+        border: 1px solid #cfd5de;
+        padding: 16px;
+        text-align: center;
+        font-weight: 600;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        border-radius: 8px 8px 0 0;
+        word-wrap: break-word;
+        word-break: break-word;
+        }
+
+        .profile-table td {
+        background-color: #fff;
+        border: 1px solid #cfd5de;
+        padding: 16px;
+        vertical-align: top;
+        word-wrap: break-word;
+        word-break: break-word;
+        }
+
+        .profile-wrapper {
+        margin-bottom: 60px;
+        overflow-x: auto;
+        }
+
+        .profile-wrapper {
+        margin-bottom: 60px;
+        }
+
+        .profile-table {
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        /* =========================================================
+        END OF about us STYLES
+        ========================================================= */
+
+
+    </style>
+    <body>
+        <header class="nav">
+            <nav>
+                <a id="logo" href="home.html">
+                    <img src="images/logo-nav.png" alt="Najdi Padel">
+                    <div class="logo-name">Najdi Padel</div>
+                </a>
+
+                <div class="nav-links" id="navLinks">
+                    <ul>
+                        <li><a href="home.html" id="home">Home</a></li>
+                        <li><a href="ServicesPage.html" id="services">Services</a></li>
+                        <li><a href="Customer-Dashboard.html" id="customer">Customer</a></li>
+                        <li><a href="service_provider.html" id="provider">Provider</a></li>
+                        <li><a href="_index.html" id="about-us">About Us</a></li>
+                        <li><a href="FAQ.html" id="FAQ">FAQ</a></li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+
+
+        <h1 class="page-title">Staff Member Profile</h1>
+
+        <section class="profile-wrapper">
+            <h2>Profile Information</h2>
+            <table class="profile-table staff-profile" style="border-collapse: collapse; width:100%;">
+
+                <tr>
+                    <th>Name</th>
+                    <th>Employee's Information</th>
+                    <th>Area of Expertise</th>
+                    <th>Skills</th>
+                    <th>Education</th>
+                </tr>
+
+                <!-- =====  (DOB) ===== -->
+                <tr>
+                    <!-- Name + photo  -->
+                    <td rowspan="2" style="text-align:center; vertical-align: top; border:1px solid #ccc; padding:1rem;">
+                        <img src="images/girl2.png" alt="Sara Mohammed" class="profile-pic" style="width:150px; height:150px; object-fit:cover; background:#96a06a; display:block; margin:0 auto 1rem;">
+                        <div class="name-box-table" style="font-weight:600; font-size:1.1rem;">Sara Mohammed</div>
+                    </td>
+
+                    <!-- Employee Information (DOB) -->
+                    <td style="border:1px solid #ccc; padding:1rem;">
+                        <strong>DOB:</strong> 03-11-1998
+                    </td>
+
+                    <!-- Area of Expertise  -->
+                    <td rowspan="2" style="vertical-align: top; border:1px solid #ccc; padding:1rem;">
+                        <ul class="panel__list" style="margin:0; padding-left:1.2rem; list-style:none;">
+                            <li>• Beginner Coaching</li>
+                            <li>• Technique Fundamentals</li>
+                        </ul>
+                    </td>
+
+                    <!-- Skills  -->
+                    <td rowspan="2" style="vertical-align: top; border:1px solid #ccc; padding:1rem;">
+                        <ul style="margin:0; padding-left:1.2rem; list-style-type:disc;">
+                            <li>
+                                Coaching Fundamentals
+                                <ul style="list-style-type:circle; margin-top:0.3rem;">
+                                    <li>Teaching Proper Grip & Posture</li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                Player Support
+                                <ul style="list-style-type:circle; margin-top:0.3rem;">
+                                    <li>Encouraging Consistency in Practice</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+
+
+                    <!-- Education  -->
+                    <td rowspan="2" style="vertical-align: top; border:1px solid #ccc; padding:1rem;">
+                        <ul style="margin:0; padding-left:1.2rem; list-style-type:disc;">
+                            <li>
+                                2017–2021
+                                <ul style="list-style-type:circle; margin-top:0.3rem;">
+                                    <li>B.Sc. in Physical Education</li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                2022
+                                <ul style="list-style-type:circle; margin-top:0.3rem;">
+                                    <li>Junior Padel Instructor License</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+
+                </tr>
+
+                <!-- =====  (Email) ===== -->
+                <tr>
+                    <td style="border:1px solid #ccc; padding:1rem;">
+                        <strong>Email:</strong> <a href="mailto:SaraMohammed@gmail.com">SaraMohammed@gmail.com</a>
+                    </td>
+                </tr>
+
+
+            </table>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <!-- Logo + text -->
+                <div class="footer-col footer-brand">
+                    <div class="brand-left">
+                        <div class="logo-circle">
+                            <img src="images/logo.png" alt="logo" height="150">
+                        </div>
+                        <div class="brand-text">
+                            <p>
+                                <strong> Najdi Padel</strong> <br> where passion meets precision.<br> Enjoy top-quality
+                                courts and certified coaches in a friendly
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-col">
+                    <h4 class="col-title">Our Services</h4>
+                    <ul class="links-list">
+                        <li><a href="#">Book a Court</a></li>
+                        <li><a href="#">Certified Coaches</a></li>
+                        <li><a href="#">Equipment reservation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-col">
+                    <h4 class="col-title">Connect us</h4>
+                    <ul class="contact-list">
+                        <li class="contact-item">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M6.6 10.2a15.05 15.05 0 006.2 6.2l1.8-1.8a1 1 0 01.9-.25c.98.25 2 .38 3.03.38a1 1 0 011 1v3a1 1 0 01-1 1C10.07 20.5 3.5 13.93 3.5 5a1 1 0 011-1h3a1 1 0 011 1c0 1.02.13 2.05.38 3.03a1 1 0 01-.25.9L6.6 10.2z"
+                                      fill="currentColor" />
+                            </svg>
+                            <span>+966 555 2022</span>
+                        </li>
+                        <li class="contact-item">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M3 6.5A2.5 2.5 0 015.5 4h13A2.5 2.5 0 0121 6.5v11A2.5 2.5 0 0118.5 20h-13A2.5 2.5 0 013 17.5v-11zM5 7v.9l7 4.6 7-4.6V7l-7 4.6L5 7z"
+                                      fill="currentColor" />
+                            </svg>
+                            <span>support@NajdiPadel.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Follow Us -->
+                <div class="footer-col follow-col">
+                    <div class="follow-section">
+                        <h4 class="col-title">Follow Us</h4>
+                        <div class="social-images">
+                            <a href="#" target="_blank">
+                                <img src="images/x-removebg-preview.png" alt="Twitter">
+                            </a>
+                            <a href="#" target="_blank">
+                                <img src="images/Instagram-removebg-preview-2.png" alt="Instagram">
+                            </a>
+                            <a href="#" target="_blank">
+                                <img src="images/snapch-removebg-preview.png" alt="Snapchat">
+                            </a>
+                            <a href="#" target="_blank">
+                                <img src="images/facebook.png" alt="Facebook">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="divider"></div>
+                <div class="copyright">©️ 2025 Website</div>
+            </div>
+        </footer>
+
+    </body>
+</html>
