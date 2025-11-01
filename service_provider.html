@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Provider</title>
+    <link rel="stylesheet" href="global.css">
+    
+    <!-- for the font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=arrow_forward_ios" >
+
+<style> 
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html, body {
+  font-family: "Cormorant Garamond", serif;
+  color: #1F1F1F;
+  background-color: #eeede7
+;
+}
+/* e2e2e2 */
+/* EEEDE7 */
+
+  .provider-services {
+  padding: 40px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.header-image{
+    min-height: 80vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(34, 38, 54, 0.7)), url(images/back_court.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+
+}
+
+.main-title{
+    width: 90%;
+    color: #fff;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+}
+
+.main-title h1{
+  margin:0;
+  color: #F3F5E7;
+  font-size: 60px;              
+  font-weight: 700;
+  text-align: center;
+}
+
+
+
+.provider-services h2 {
+  font-size:36px;
+  font-weight: 600;
+  border-bottom: 4px solid #2f476d;
+  display: inline-block;
+  padding-bottom:  4px;
+  width: 190px; 
+
+}
+
+/* for service cards */
+.provider-cards {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center; 
+  gap: 32px; 
+}
+
+.provider-service-card {
+  flex: 0 0 260px;
+  background-color: #f8f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+  padding: 16px;
+  transition: all 0.3s ease-in-out;
+  position: relative;   
+  overflow: hidden;
+}
+
+.badge{
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+  background: #d9d9d9;
+  color: #4a4a4a;
+}
+
+
+.provider-service-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.provider-service-card img {
+  width: 100%;
+  height: 280px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.provider-service-card h3 {
+  font-size: 1.4em;
+  margin-top: 15px;
+}
+
+.provider-service-card p {
+  font-size: 1em;
+  color: #888;
+}
+
+
+.provider-cards-container {
+  position: relative; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  width: 100%;
+}
+
+
+.scrolling-arrow {
+  position: absolute;
+  right:70px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 12px;
+}
+
+
+/* ____________manage staff & add service ________*/
+
+#rectangles {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 100px;
+  margin: 0 0 150px 0;   
+
+}
+
+.rectangle-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 900px;
+  height: 355px;
+  background: #F8F9f9; /** another color:EDEBE4,f3f3ed**/
+  margin: 0 0 60px 0;   
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rectangle-container .img-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  
+
+}
+
+
+.rectangle-container .img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+
+  }
+
+.rectangle-container .details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 40px;
+}
+
+.rectangle-container .details h2 {
+  color:#2f476d;
+  margin: 0;
+  padding: 0;
+  font-size: 2em;
+  line-height: 1em;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+
+.rectangle-container .details p {
+    color:#2f476d;
+  font-size: 20px;
+  margin-bottom:12px;
+  text-align: center;
+  font-weight: 500;
+
+    
+}
+
+
+.provider-button {
+  background-color: #a8b288;
+  color: white;
+  border: none;
+  padding: 15px 15px;
+  font-size: 25px;
+  font-weight: 1000;
+  border-radius: 40px;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+
+
+/* for smaller screens*/
+@media (max-width: 600px) {
+
+  .provider-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .provider-service-card {
+    width: 90%;
+  }
+
+  .provider-course-card img {
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .scrolling-arrow {
+      right:-30px; 
+
+  }
+
+  .rectangle-container {
+    width: 90%;
+    height: auto;
+    margin: 0 0 40px;
+  }
+
+  .rectangle-container .img-container,
+  .rectangle-container .details {
+    width: 100%;
+  }
+
+  .rectangle-container .img-container {
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .provider-button {
+    font-size: 18px;
+  }
+  
+
+  .main-title h1{
+    font-size: 40px;
+  }
+
+  .provider-services h2 {
+  font-size:25px;
+  width: 130px; 
+
+}
+}
+  
+</style>
+ 
+</head>
+<body>
+    <header>
+        <nav>
+    <a id="logo" href="home.html">
+      <img src="images/logo-nav.png" alt="logo">
+      <div class="logo-name">Najdi Padel</div>
+    </a>
+	
+    <div class="nav-links" id="navLinks">
+      <ul>
+        <li><a href="home.html" id="home">Home</a></li>
+        <li><a href="ServicesPage.html" id="services">Services</a></li>
+        <li><a href="Customer-Dashboard.html" id="customer">Customer</a></li>
+        <li><a href="service_provider.html" id="provider">Provider</a></li>
+        <li><a href="index.html" id="about-us">About Us</a></li>
+        <li><a href="FAQ.html" id="FAQ">FAQ</a></li>
+
+      </ul>
+    </div>
+  </nav>
+    </header>
+    <!-- bread crumbs -->
+       <div class="breadcrumbs">
+        <a href="home.html">Home</a> >
+        <span>Service Provider Dashboard</span>
+        </div>
+
+    <main>
+      <section class = "header-image"> 
+          <div class="main-title">
+              <h1>Service Provider Dashboard</h1>
+          </div>
+      </section>
+
+      
+
+      <!--services-->
+      <section class="provider-services">
+          <h2>Services</h2>
+
+          <div class="provider-cards-container">
+              <div class="provider-cards">
+                  <div class="provider-service-card">
+                      <img src="images/court2.jpg" alt="padel court">
+                      <span class="badge badge-court">Court Booking</span>
+
+                      <h3>Padel Way</h3>
+                      <p>130.00 SR</p>
+                  </div>
+
+                  <div class="provider-service-card">
+                      <img src="images/racket2.jpg" alt="padel equipments" >
+                      <span class="badge badge-equip">Equipment Rental</span>
+
+                      <h3>Racket & Balls</h3>
+                      <p>150.00 SR</p>
+                  </div>
+
+                  <div class="provider-service-card">
+                  <img src="images/coach3ed.jpg" alt="padel coach">
+                 <span class="badge badge-coach">Coach Session</span>
+
+                      <h3>Ryan Ahmed</h3>
+                      <p>200.00 SR</p>
+                  </div>
+
+                  <div class="provider-service-card">
+                  <img src="images/court1.jpg" alt="padel court">
+                   <span class="badge badge-court">Court Booking</span>
+                    
+                      <h3>Padel Plus</h3>
+                      <p>150.00 SR</p>
+                  </div>
+              </div>
+
+              <div class="scrolling-arrow">
+              <span class="material-symbols-outlined">arrow_forward_ios</span>
+              </div>
+          </div>    
+      </section>
+
+  <!-- manage staff & add service --> 
+    <section id="rectangles">
+      <div class="rectangle-container">
+        <div class="img-container">
+          <img src="images/add_service.png" alt="">
+        </div>
+        <div class="details">
+          <div class="content">
+            <h2>Services</h2>
+            <p>Add and publish a new service</p>
+            <a href="add_service.html" class="provider-button">Add Service</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rectangle-container">
+        <div class="img-container">
+          <img src="images/staff.png" alt="">
+        </div>
+
+        <div class="details">
+          <div class="content">
+            <h2>Staff</h2>
+            <p>Add, edit or remove a staff member </p>
+            <a href="manage-staff.html" class="provider-button">Manage Staff</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+
+ <footer class="site-footer">
+        <div class="footer-inner">
+            <!-- Logo + text -->
+            <div class="footer-col footer-brand">
+                <div class="brand-left">
+                    <div class="logo-circle">
+                        <img src="images/logo.png" height="150" alt="Najdi Padel Logo">
+
+                    </div>
+                    <div class="brand-text">
+                        <p> <strong> Najdi Padel</strong> <br> where passion meets precision.<br> Enjoy top-quality
+                            courts and certified coaches in a friendly </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-col">
+                <h4 class="col-title">Our Services</h4>
+                <ul class="links-list">
+                    <li><a href="ServicesPage.html#courts">Book a Court</a></li>
+                    <li><a href="ServicesPage.html#coaches">Certified Coaches</a></li>
+                    <li><a href="ServicesPage.html#equipment">Equipment reservation</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-col">
+                <h4 class="col-title">Connect us</h4>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path
+                                d="M6.6 10.2a15.05 15.05 0 006.2 6.2l1.8-1.8a1 1 0 01.9-.25c.98.25 2 .38 3.03.38a1 1 0 011 1v3a1 1 0 01-1 1C10.07 20.5 3.5 13.93 3.5 5a1 1 0 011-1h3a1 1 0 011 1c0 1.02.13 2.05.38 3.03a1 1 0 01-.25.9L6.6 10.2z"
+                                fill="currentColor" />
+                        </svg>
+                        <span>+966 555 2022</span>
+                    </li>
+                    <li class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path
+                                d="M3 6.5A2.5 2.5 0 015.5 4h13A2.5 2.5 0 0121 6.5v11A2.5 2.5 0 0118.5 20h-13A2.5 2.5 0 013 17.5v-11zM5 7v.9l7 4.6 7-4.6V7l-7 4.6L5 7z"
+                                fill="currentColor" />
+                        </svg>
+                        <span>support@NajdiPadel.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Follow Us -->
+            <div class="footer-col follow-col">
+                <div class="follow-section">
+                    <h4 class="col-title">Follow Us</h4>
+                    <div class="social-images">
+                        <a href="#" target="_blank">
+                            <img src="images/x.png" alt="Twitter">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="images/Instagram.png" alt="Instagram">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="images/snap.png" alt="Snapchat">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="images/facebook.png" alt="Facebook">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="divider"></div>
+            <div class="copyright">© 2025 Website</div>
+        </div>
+    </footer>
+     
+</body>
+
+</html>
