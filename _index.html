@@ -26,9 +26,9 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
+    
 
-        * {
+        
             box-sizing: border-box;
             font-family: "Cormorant Garamond", serif !important;
         }
@@ -49,9 +49,11 @@
         }
 
         .container {
-            width: min(1100px, 92%);
+            max-width: 1100px;
+            width: 92%;
             margin: 0 auto;
         }
+
 
         /* ===== TEAM CARDS ===== */
         .team-grid-wrapper {
@@ -339,205 +341,206 @@
 
 
     </style>
+</head>
 
-    <body>
-        <!-- ===== HEADER ===== -->
-        <nav>
-            <a id="logo" href="home.html">
-                <img src="images/logo-nav.png" alt="Najdi Padel">
-                <div class="logo-name">Najdi Padel</div>
-            </a>
+<body>
+    <!-- ===== HEADER ===== -->
+    <nav>
+        <a id="logo" href="home.html">
+            <img src="images/logo-nav.png" alt="Najdi Padel">
+            <div class="logo-name">Najdi Padel</div>
+        </a>
 
-            <div class="nav-links" id="navLinks">
-                <ul>
-                    <li><a href="home.html" id="home">Home</a></li>
-                    <li><a href="ServicesPage.html" id="services">Services</a></li>
-                    <li><a href="Customer-Dashboard.html" id="customer">Customer</a></li>
-                    <li><a href="service_provider.html" id="provider">Provider</a></li>
-                    <li><a href="_index.html" id="about-us">About Us</a></li>
-                    <li><a href="FAQ.html" id="FAQ">FAQ</a></li>
+        <div class="nav-links" id="navLinks">
+            <ul>
+                <li><a href="home.html" id="home">Home</a></li>
+                <li><a href="ServicesPage.html" id="services">Services</a></li>
+                <li><a href="Customer-Dashboard.html" id="customer">Customer</a></li>
+                <li><a href="service_provider.html" id="provider">Provider</a></li>
+                <li><a href="_index.html" id="about-us">About Us</a></li>
+                <li><a href="FAQ.html" id="FAQ">FAQ</a></li>
 
+            </ul>
+        </div>
+    </nav>
+    <!-- ===== TITLE ===== -->
+    <h1 class="page-title">Our Team</h1>
+
+    <!-- ===== TEAM CARDS ===== -->
+    <section class="team-grid-wrapper">
+
+
+        <div class="team-grid-scroll">
+
+            <div class="member-card">
+                <img class="avatar" src="images/coach2.jpg" alt="Alex Martinez">
+                <a class="member-name-link" href="staff1.html">Alex Martinez</a>
+            </div>
+
+            <div class="member-card">
+                <img class="avatar" src="images/coach4.jpg" alt="Emily Jhon">
+                <a class="member-name-link" href="staff2.html">Emily Jhon</a>
+            </div>
+
+            <div class="member-card">
+                <img class="avatar" src="images/coach1.jpg" alt="Sara Mohammed">
+                <a class="member-name-link" href="staff3.html">Sara Mohammed</a>
+            </div>
+
+            <div class="member-card">
+                <img class="avatar" src="images/coach3.jpg" alt="Ryan Ahmed">
+                <a class="member-name-link" href="staff4.html">Ryan Ahmed</a>
+            </div>
+
+
+
+        </div>
+
+
+    </section>
+
+    <!-- ===== JOIN FORM  ===== -->
+
+    <section class="section">
+        <h2 style="text-align:center; font-size: 40px;">Join Our Team !</h2>
+
+        <form class="form-card" action="client.php" method="post" enctype="multipart/form-data">
+            <div class="form-grid">
+
+                <div>
+                    <label>First Name</label>
+                    <input type="text" name="first_name" placeholder="Enter your first name">
+                </div>
+
+                <div>
+                    <label>Last Name</label>
+                    <input type="text" name="last_name" placeholder="Enter your last name">
+                </div>
+
+                <div class="full">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Enter your email address">
+                </div>
+
+                <div>
+                    <label>DOB</label>
+                    <input type="date" name="dob">
+                </div>
+
+                <div>
+                    <label>Area Of Expertise</label>
+                    <input type="text" name="expertise" placeholder="Your area of expertise">
+                </div>
+
+                <div class="full">
+                    <label>Skills</label>
+                    <input type="text" name="skills" placeholder="List your skills">
+                </div>
+
+                <div class="full">
+                    <label>Education</label>
+                    <textarea name="education" rows="3" placeholder="Your educational background"></textarea>
+                </div>
+
+                <div class="full">
+                    <label>Upload Photo</label>
+                    <input type="file" name="photo" accept="image/*">
+                </div>
+
+                <div class="full">
+                    <label>Message</label>
+                    <textarea name="message" rows="3" placeholder="Add a message (optional)"></textarea>
+                </div>
+
+            </div>
+
+            <div class="btn-container">
+                <button type="submit" class="btn-dark">Submit</button>
+            </div>
+
+        </form>
+
+    </section>
+
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <!-- Logo + text -->
+            <div class="footer-col footer-brand">
+                <div class="brand-left">
+                    <div class="logo-circle">
+                        <img src="images/logo.png" height="150" alt="Najdi Padel Logo">
+
+                    </div>
+                    <div class="brand-text">
+                        <p>
+                            <strong> Najdi Padel</strong> <br> where passion meets precision.<br> Enjoy top-quality
+                            courts and certified coaches in a friendly
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-col">
+                <h4 class="col-title">Our Services</h4>
+                <ul class="links-list">
+                    <li><a href="ServicesPage.html#courts">Book a Court</a></li>
+                    <li><a href="ServicesPage.html#coaches">Certified Coaches</a></li>
+                    <li><a href="ServicesPage.html#equipment">Equipment reservation</a></li>
                 </ul>
             </div>
-        </nav>
-        <!-- ===== TITLE ===== -->
-        <h1 class="page-title">Our Team</h1>
 
-        <!-- ===== TEAM CARDS ===== -->
-        <section class="team-grid-wrapper">
-
-
-            <div class="team-grid-scroll">
-
-                <div class="member-card">
-                    <img class="avatar" src="images/coach2.jpg" alt="Alex Martinez">
-                    <a class="member-name-link" href="staff1.html">Alex Martinez</a>
-                </div>
-
-                <div class="member-card">
-                    <img class="avatar" src="images/coach4.jpg" alt="Emily Jhon">
-                    <a class="member-name-link" href="staff2.html">Emily Jhon</a>
-                </div>
-
-                <div class="member-card">
-                    <img class="avatar" src="images/coach1.jpg" alt="Sara Mohammed">
-                    <a class="member-name-link" href="staff3.html">Sara Mohammed</a>
-                </div>
-
-                <div class="member-card">
-                    <img class="avatar" src="images/coach3.jpg" alt="Ryan Ahmed">
-                    <a class="member-name-link" href="staff4.html">Ryan Ahmed</a>
-                </div>
-
-
-
+            <!-- Contact -->
+            <div class="footer-col">
+                <h4 class="col-title">Connect us</h4>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M6.6 10.2a15.05 15.05 0 006.2 6.2l1.8-1.8a1 1 0 01.9-.25c.98.25 2 .38 3.03.38a1 1 0 011 1v3a1 1 0 01-1 1C10.07 20.5 3.5 13.93 3.5 5a1 1 0 011-1h3a1 1 0 011 1c0 1.02.13 2.05.38 3.03a1 1 0 01-.25.9L6.6 10.2z"
+                                  fill="currentColor" />
+                        </svg>
+                        <span>+966 555 2022</span>
+                    </li>
+                    <li class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M3 6.5A2.5 2.5 0 015.5 4h13A2.5 2.5 0 0121 6.5v11A2.5 2.5 0 0118.5 20h-13A2.5 2.5 0 013 17.5v-11zM5 7v.9l7 4.6 7-4.6V7l-7 4.6L5 7z"
+                                  fill="currentColor" />
+                        </svg>
+                        <span>support@NajdiPadel.com</span>
+                    </li>
+                </ul>
             </div>
 
-
-        </section>
-
-        <!-- ===== JOIN FORM  ===== -->
-
-        <section class="section">
-            <h2 style="text-align:center; font-size: 40px;">Join Our Team !</h2>
-
-            <form class="form-card" action="client.php" method="post" enctype="multipart/form-data">
-                <div class="form-grid">
-
-                    <div>
-                        <label>First Name</label>
-                        <input type="text" name="first_name" placeholder="Enter your first name">
-                    </div>
-
-                    <div>
-                        <label>Last Name</label>
-                        <input type="text" name="last_name" placeholder="Enter your last name">
-                    </div>
-
-                    <div class="full">
-                        <label>Email</label>
-                        <input type="email" name="email" placeholder="Enter your email address">
-                    </div>
-
-                    <div>
-                        <label>DOB</label>
-                        <input type="date" name="dob">
-                    </div>
-
-                    <div>
-                        <label>Area Of Expertise</label>
-                        <input type="text" name="expertise" placeholder="Your area of expertise">
-                    </div>
-
-                    <div class="full">
-                        <label>Skills</label>
-                        <input type="text" name="skills" placeholder="List your skills">
-                    </div>
-
-                    <div class="full">
-                        <label>Education</label>
-                        <textarea name="education" rows="3" placeholder="Your educational background"></textarea>
-                    </div>
-
-                    <div class="full">
-                        <label>Upload Photo</label>
-                        <input type="file" name="photo" accept="image/*">
-                    </div>
-
-                    <div class="full">
-                        <label>Message</label>
-                        <textarea name="message" rows="3" placeholder="Add a message (optional)"></textarea>
-                    </div>
-
-                </div>
-
-                <div class="btn-container">
-                    <button type="submit" class="btn-dark">Submit</button>
-                </div>
-
-            </form>
-
-        </section>
-
-
-
-        <!-- ===== FOOTER ===== -->
-        <footer class="site-footer">
-            <div class="footer-inner">
-                <!-- Logo + text -->
-                <div class="footer-col footer-brand">
-                    <div class="brand-left">
-                        <div class="logo-circle">
-                            <img src="images/logo.png" height="150" alt="Najdi Padel Logo">
-
-                        </div>
-                        <div class="brand-text">
-                            <p>
-                                <strong> Najdi Padel</strong> <br> where passion meets precision.<br> Enjoy top-quality
-                                courts and certified coaches in a friendly
-                            </p>
-                        </div>
+            <!-- Follow Us -->
+            <div class="footer-col follow-col">
+                <div class="follow-section">
+                    <h4 class="col-title">Follow Us</h4>
+                    <div class="social-images">
+                        <a href="#" target="_blank">
+                            <img src="images/x.png" alt="Twitter">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="images/Instagram.png" alt="Instagram">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="images/snap.png" alt="Snapchat">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="images/facebook.png" alt="Facebook">
+                        </a>
                     </div>
                 </div>
 
-                <!-- Services -->
-                <div class="footer-col">
-                    <h4 class="col-title">Our Services</h4>
-                    <ul class="links-list">
-                        <li><a href="ServicesPage.html#courts">Book a Court</a></li>
-                        <li><a href="ServicesPage.html#coaches">Certified Coaches</a></li>
-                        <li><a href="ServicesPage.html#equipment">Equipment reservation</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact -->
-                <div class="footer-col">
-                    <h4 class="col-title">Connect us</h4>
-                    <ul class="contact-list">
-                        <li class="contact-item">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <path d="M6.6 10.2a15.05 15.05 0 006.2 6.2l1.8-1.8a1 1 0 01.9-.25c.98.25 2 .38 3.03.38a1 1 0 011 1v3a1 1 0 01-1 1C10.07 20.5 3.5 13.93 3.5 5a1 1 0 011-1h3a1 1 0 011 1c0 1.02.13 2.05.38 3.03a1 1 0 01-.25.9L6.6 10.2z"
-                                      fill="currentColor" />
-                            </svg>
-                            <span>+966 555 2022</span>
-                        </li>
-                        <li class="contact-item">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <path d="M3 6.5A2.5 2.5 0 015.5 4h13A2.5 2.5 0 0121 6.5v11A2.5 2.5 0 0118.5 20h-13A2.5 2.5 0 013 17.5v-11zM5 7v.9l7 4.6 7-4.6V7l-7 4.6L5 7z"
-                                      fill="currentColor" />
-                            </svg>
-                            <span>support@NajdiPadel.com</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Follow Us -->
-                <div class="footer-col follow-col">
-                    <div class="follow-section">
-                        <h4 class="col-title">Follow Us</h4>
-                        <div class="social-images">
-                            <a href="#" target="_blank">
-                                <img src="images/x.png" alt="Twitter">
-                            </a>
-                            <a href="#" target="_blank">
-                                <img src="images/Instagram.png" alt="Instagram">
-                            </a>
-                            <a href="#" target="_blank">
-                                <img src="images/snap.png" alt="Snapchat">
-                            </a>
-                            <a href="#" target="_blank">
-                                <img src="images/facebook.png" alt="Facebook">
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
             </div>
+        </div>
 
-            <div class="footer-bottom">
-                <div class="divider"></div>
-                <div class="copyright">© 2025 Website</div>
-            </div>
-        </footer>
-    </body>
+        <div class="footer-bottom">
+            <div class="divider"></div>
+            <div class="copyright">© 2025 Website</div>
+        </div>
+    </footer>
+ </body>
 </html>
