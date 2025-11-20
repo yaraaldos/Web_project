@@ -8,6 +8,8 @@
     <title>About Us – Najdi Padel</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
     <link rel="stylesheet" href="global.css">
     <style>
         /* ==================== Sara-about us Styles ==================== */
@@ -337,6 +339,17 @@
             border-collapse: collapse;
             width: 100%;
         }
+        .input-error-border {
+    border: 2px solid #d9534f !important;
+}
+
+.small-error-message {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
 
         /* =========================================================
         END OF about us STYLES
@@ -354,6 +367,9 @@
             <img src="images/logo-nav.png" alt="Najdi Padel">
             <div class="logo-name">Najdi Padel</div>
         </a>
+        <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
 
         <div class="nav-links" id="navLinks">
             <ul>
@@ -412,61 +428,96 @@
     <section class="section">
         <h2 style="text-align:center; font-size: 40px;">Join Our Team !</h2>
 
-        <form class="form-card" action="client.php" method="post" enctype="multipart/form-data">
-            <div class="form-grid">
+        <form class="form-card" 
+      id="sara_joinTeamForm_981" 
+      action="client.php" 
+      method="post" 
+      enctype="multipart/form-data">
+    <div class="form-grid">
 
-                <div>
-                    <label>First Name</label>
-                    <input type="text" name="first_name" placeholder="Enter your first name">
-                </div>
+        <div>
+            <label for="sara_firstNameField_981">First Name</label>
+            <input type="text" 
+                   name="first_name" 
+                   id="sara_firstNameField_981"
+                   placeholder="Enter your first name">
+        </div>
 
-                <div>
-                    <label>Last Name</label>
-                    <input type="text" name="last_name" placeholder="Enter your last name">
-                </div>
+        <div>
+            <label for="sara_lastNameField_981">Last Name</label>
+            <input type="text" 
+                   name="last_name" 
+                   id="sara_lastNameField_981"
+                   placeholder="Enter your last name">
+        </div>
 
-                <div class="full">
-                    <label>Email</label>
-                    <input type="email" name="email" placeholder="Enter your email address">
-                </div>
+        <div class="full">
+            <label for="sara_emailField_981">Email</label>
+            <input type="email" 
+                   name="email" 
+                   id="sara_emailField_981"
+                   placeholder="Enter your email address">
+        </div>
 
-                <div>
-                    <label>DOB</label>
-                    <input type="date" name="dob">
-                </div>
+        <div>
+            <label for="sara_dobField_981">DOB</label>
+            <input type="date" 
+                   name="dob"
+                   id="sara_dobField_981"
+                   max="2008-12-31">
+        </div>
 
-                <div>
-                    <label>Area Of Expertise</label>
-                    <input type="text" name="expertise" placeholder="Your area of expertise">
-                </div>
+        <div>
+            <label for="sara_expertiseField_981">Area Of Expertise</label>
+            <input type="text" 
+                   name="expertise" 
+                   id="sara_expertiseField_981"
+                   placeholder="Your area of expertise">
+        </div>
 
-                <div class="full">
-                    <label>Skills</label>
-                    <input type="text" name="skills" placeholder="List your skills">
-                </div>
+        <div class="full">
+            <label for="sara_skillsField_981">Skills</label>
+            <input type="text" 
+                   name="skills" 
+                   id="sara_skillsField_981"
+                   placeholder="List your skills">
+        </div>
 
-                <div class="full">
-                    <label>Education</label>
-                    <textarea name="education" rows="3" placeholder="Your educational background"></textarea>
-                </div>
+        <div class="full">
+            <label for="sara_educationField_981">Education</label>
+            <textarea name="education" 
+                      id="sara_educationField_981"
+                      rows="3" 
+                      placeholder="Your educational background"></textarea>
+        </div>
 
-                <div class="full">
-                    <label>Upload Photo</label>
-                    <input type="file" name="photo" accept="image/*">
-                </div>
+        <div class="full">
+            <label for="sara_photoField_981">Upload Photo</label>
+            <input type="file" 
+                   name="photo" 
+                   id="sara_photoField_981"
+                   accept="image/*">
+        </div>
 
-                <div class="full">
-                    <label>Message</label>
-                    <textarea name="message" rows="3" placeholder="Add a message (optional)"></textarea>
-                </div>
+        <div class="full">
+            <label for="sara_messageField_981">Message</label>
+            <textarea name="message" 
+                      id="sara_messageField_981"
+                      rows="3" 
+                      placeholder="Add a message (optional)"></textarea>
+        </div>
 
-            </div>
+    </div>
 
-            <div class="btn-container">
-                <button type="submit" class="btn-dark">Submit</button>
-            </div>
+    <div class="btn-container">
+        <button type="submit" 
+                class="btn-dark" 
+                id="sara_submitButton_981">
+            Submit
+        </button>
+    </div>
 
-        </form>
+</form>
 
     </section>
 
@@ -550,5 +601,10 @@
             <div class="copyright">© 2025 Website</div>
         </div>
     </footer>
+    <script src="aboutus-jointeam-validation.js"></script>
+    <script src="script.js" defer></script>
+
+
+
  </body>
 </html>
