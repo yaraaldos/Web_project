@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Najdi Padel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="global.css">
+
+
+    <style>
+        :root {
+            --bg: #EEEDE7;
+            --blue: #2f476d;
+            --green: #A8B288;
+            --navy: #1F3858;
+            --sky: #7EAFC0;
+            --radius: 14px;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cormorant Garamound', 'sans-serif';
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--navy);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            direction: ltr;
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .hero-img {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: -2;
+        }
+
+        .hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 40%;
+            filter: brightness(0.75) contrast(1.05) saturate(1.1);
+            transform: scale(1.02);
+            animation: zoomIn 20s ease-in-out infinite alternate;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(31, 56, 88, 0.6),
+                    rgba(31, 56, 88, 0.3));
+            z-index: -1;
+        }
+
+        .hero-text {
+            max-width: 800px;
+            padding: 20px;
+            text-align: center;
+            animation: fadeUp 1.2s ease both;
+        }
+
+        .hero-text p {
+            font-size: clamp(16px, 2vw, 20px);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #f5f5f5;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-text h2 {
+            font-size: clamp(36px, 6vw, 60px);
+            margin-bottom: 16px;
+            color: #ffffff;
+            text-shadow:
+                0 0 12px rgba(170, 177, 140, 0.9),
+                0 0 28px rgba(170, 177, 140, 0.4);
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #aab18c, #c1c6a3);
+            color: #fff;
+            border: none;
+            border-radius: 999px;
+            padding: 14px 36px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            box-shadow: 0 0 20px rgba(170, 177, 140, 0.55);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+            background: linear-gradient(135deg, #b7be9a, #d4d8b6);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(1.02);
+            }
+
+            to {
+                transform: scale(1.07);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 70vh;
+                border-radius: 0;
+            }
+
+            .hero-text h2 {
+                font-size: 38px;
+            }
+        }
+
+        /* ===== Services Section ===== */
+        #home-services {
+            margin: 80px 0;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        #home-services h2 {
+            font-size: 36px;
+            font-weight: 600;
+            border-bottom: 4px solid #2f476d;
+            display: inline-block;
+            padding-bottom: 4px;
+            width: 190px;
+            margin-bottom: 20px;
+            color: #2f476d;
+        }
+
+        #home-services .service-cards {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        #home-services .service-card {
+            flex: 0 0 260px;
+            background-color: #f8f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            padding: 16px;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        #home-services .service-card img {
+            width: 100%;
+            height: 280px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        #home-services .service-card h3 {
+            font-size: 1.4em;
+            margin-top: 15px;
+            color: #6f7458;
+            font-weight: 700;
+        }
+
+        #home-services .service-card .info {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            color: #1f2023;
+            font-size: 0.95em;
+        }
+
+        #home-services .service-card:hover .info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #home-services .service-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        #achievements>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Achievements Section */
+        #achievements {
+            width: 100vw;
+            margin: 30px 0;
+            padding: 80px 0;
+            text-align: center;
+            background-color: #A8B288;
+            color: #fff;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #achievements h2 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(11, 39, 25, 0.8);
+        }
+
+        .achievements {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .achievement {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 35px 30px;
+            border-radius: 15px;
+            width: 260px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .achievement:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .achievement i {
+            font-size: 4rem;
+            color: #4E654E;
+            filter: drop-shadow(1px 1px 2px rgba(255, 255, 255, 0.8));
+        }
+
+        .achievement h3 {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(11, 39, 25, 0.8);
+        }
+
+        .achievement p {
+            font-size: 1.25rem;
+            margin: 0;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(11, 39, 25, 0.8);
+        }
+
+        .reviews-section {
+            background-color: #EEEDE7;
+            padding: 50px 0;
+            text-align: center;
+            margin: 80px 0;
+        }
+
+        .reviews-section h2 {
+            font-size: 30px;
+            color: #2c3553;
+            margin-bottom: 45px;
+        }
+
+        .reviews-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 0 40px;
+        }
+
+        .review-card {
+            background-color: #aab18c;
+            border-radius: 10px;
+            flex: 0 0 320px;
+            display: flex;
+            gap: 15px;
+            padding: 18px;
+            text-align: left;
+            min-height: 150px;
+        }
+
+        .review-left img {
+            width: 60px;
+            height: 60px;
+            border-radius: 6px;
+            object-fit: cover;
+            background: #d7d7d7;
+        }
+
+        .review-right {
+            flex: 1;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .review-header strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        .service {
+            color: #555;
+            font-size: 13px;
+        }
+
+        .stars::before {
+            content: "★★★★★";
+            color: #ccc;
+            font-size: 17px;
+            letter-spacing: 2px;
+        }
+
+        .stars[data-rating="5"]::before {
+            content: "★★★★★";
+            color: gold;
+        }
+
+        .stars[data-rating="4"]::before {
+            content: "★★★★☆";
+            color: gold;
+        }
+
+        .stars[data-rating="3"]::before {
+            content: "★★★☆☆";
+            color: gold;
+        }
+
+        .stars[data-rating="2"]::before {
+            content: "★★☆☆☆";
+            color: gold;
+        }
+
+        .stars[data-rating="1"]::before {
+            content: "★☆☆☆☆";
+            color: gold;
+        }
+
+        .review-right p {
+            margin-top: 8px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        /* ===== Theme buttons ===== */
+        .theme-buttons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 16px;
+        }
+
+        .theme-buttons button {
+            background-color: #A8B288;
+            border: none;
+            color: #1F3858;
+            padding: 6px 12px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .theme-buttons button:hover {
+            opacity: 0.9;
+        }
+
+
+        /* Back to top button */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background-color: #2f476d;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+        }
+
+        #backToTop:hover {
+            transform: translateY(-2px);
+        }
+
+        .footer-clock {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #7EAFC0;
+        }
+
+
+        /* ===== MOBILE NAV (IPHONE) ===== */
+        @media (max-width: 600px) {
+
+
+
+            #home-services .service-card {
+                flex: 0 0 75%;
+                height: auto;
+                padding: 12px;
+            }
+
+            #home-services .service-card img {
+                height: 200px;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+
+            #home-services .service-card h3 {
+                font-size: 20px;
+                margin-top: 10px;
+            }
+
+            #home-services .service-card .info {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+
+
+
+            .reviews-container {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                gap: 20px;
+                padding: 10px;
+                scroll-snap-type: x mandatory;
+            }
+
+            .review-card {
+                flex: 0 0 88%;
+                padding: 18px;
+                min-height: 180px;
+                scroll-snap-align: center;
+                border-radius: 14px;
+            }
+
+            .review-left img {
+                width: 70px;
+                height: 70px;
+                border-radius: 10px;
+                object-fit: cover;
+            }
+
+            .review-right p {
+                font-size: 15px;
+                line-height: 1.5;
+            }
+
+
+
+
+
+        }
+
+        @media (max-width: 600px) {
+
+            #achievements {
+                padding: 60px 0;
+            }
+
+            #achievements h2 {
+                font-size: 24px;
+                margin-bottom: 25px;
+            }
+
+            .achievements {
+                display: flex;
+                flex-direction: column;
+                gap: 18px;
+                width: 90%;
+                margin: 0 auto;
+            }
+
+            .achievement {
+                width: 100%;
+                padding: 22px;
+                border-radius: 14px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .achievement i {
+                font-size: 38px;
+            }
+
+            .achievement h3 {
+                font-size: 32px;
+                margin: 0;
+            }
+
+            .achievement p {
+                font-size: 15px;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a id="logo" href="index.html">
+            <img src="images/logo-nav.png" alt="Najdi Padel">
+            <div class="logo-name">Najdi Padel</div>
+        </a>
+
+        <div class="theme-buttons">
+            <button id="lightBtn">Light</button>
+            <button id="darkBtn">Dark</button>
+        </div>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <ul>
+                <li><a href="home.html" id="home">Home</a></li>
+                <li><a href="ServicesPage.html" id="services">Services</a></li>
+                <li><a href="Customer-Dashboard.html" id="customer">Customer</a></li>
+                <li><a href="service_provider.html" id="provider">Provider</a></li>
+                <li><a href="_index.html" id="about-us">About Us</a></li>
+                <li><a href="FAQ.html" id="FAQ">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumbs">
+        <span> > Home</span>
+    </div>
+
+    <section class="hero">
+        <div class="hero-img">
+            <img src="images/padel-home2.jpg" alt="Padel court" />
+        </div>
+
+        <div class="hero-text">
+            <h2>Our Vision</h2>
+            <p>At Najdi Padel, we aim to build Saudi Arabia’s most connected padel community — linking players, coaches,
+                and courts through innovation and passion for the game.</p>
+            <button class="btn">Learn more</button>
+        </div>
+    </section>
+
+    <div id="home-services" class="service">
+        <h2>Services</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <img src="images/padel-court-home.jpg" alt="padel court">
+                <h3>Court Booking</h3>
+                <div class="info">
+                    <p>Find and book padel courts near you in just a few clicks.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="images/re3-padel.jpg" alt="padel equipments">
+                <h3>Equipment Rental</h3>
+                <div class="info">
+                    <p>Rent premium rackets and gear — play like a pro, anytime.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="images/coach-home2.jpg" alt="padel coach">
+                <h3>Coach Session</h3>
+                <div class="info">
+                    <p>Train with certified coaches and elevate your game to the next level.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <h2>Achievements</h2>
+        <div class="achievements">
+            <div class="achievement">
+                <i class="fas fa-project-diagram" aria-hidden="true"></i>
+                <h3>+150</h3>
+                <p>Padel Courts</p>
+            </div>
+            <div class="achievement">
+                <i class="fas fa-trophy" aria-hidden="true"></i>
+                <h3>+50</h3>
+                <p> Certified Couches </p>
+            </div>
+            <div class="achievement">
+                <i class="fas fa-users" aria-hidden="true"></i>
+                <h3>+200</h3>
+                <p>Players Joined</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews-section">
+        <h2>User Reviews</h2>
+
+        <div class="reviews-container">
+
+            <div class="review-card">
+                <div class="review-left">
+                    <img src="images/Sarah.jpg" alt="User Photo">
+                </div>
+                <div class="review-right">
+                    <div class="review-header">
+                        <div>
+                            <strong>Sarah Ahmed</strong><br>
+                            <span class="service">Court Booking</span>
+                        </div>
+                        <div class="stars" data-rating="5"></div>
+                    </div>
+                    <p>Everything was smooth and organized, great experience!</p>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-left">
+                    <img src="images/Ali.jpg" alt="User Photo">
+                </div>
+                <div class="review-right">
+                    <div class="review-header">
+                        <div>
+                            <strong>Ali AlNasser</strong><br>
+                            <span class="service">Coaching</span>
+                        </div>
+                        <div class="stars" data-rating="4"></div>
+                    </div>
+                    <p>The coach was really professional and friendly!</p>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-left">
+                    <img src="images/Mariam.jpg" alt="User Photo">
+                </div>
+                <div class="review-right">
+                    <div class="review-header">
+                        <div>
+                            <strong>Mariam</strong><br>
+                            <span class="service">Equipment Rental</span>
+                        </div>
+                        <div class="stars" data-rating="3"></div>
+                    </div>
+                    <p>Good service, but the equipment could be newer.</p>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-left">
+                    <img src="images/faisal.jpg " alt="User Photo">
+                </div>
+                <div class="review-right">
+                    <div class="review-header">
+                        <div>
+                            <strong>Faisal</strong><br>
+                            <span class="service">Court Reservation</span>
+                        </div>
+                        <div class="stars" data-rating="5"></div>
+                    </div>
+                    <p>Perfect courts and easy booking process!</p>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-left">
+                    <img src="images/Laila.jpg" alt="User Photo">
+                </div>
+                <div class="review-right">
+                    <div class="review-header">
+                        <div>
+                            <strong>Laila</strong><br>
+                            <span class="service">Padel Session</span>
+                        </div>
+                        <div class="stars" data-rating="2"></div>
+                    </div>
+                    <p>Nice place but it was too crowded when I visited.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <!-- Logo + text -->
+            <div class="footer-col footer-brand">
+                <div class="brand-left">
+                    <div class="logo-circle">
+                        <img src="images/logo.png" height="150" alt="Najdi Padel Logo">
+                    </div>
+                    <div class="brand-text">
+                        <p> <strong> Najdi Padel</strong> <br> where passion meets precision.<br> Enjoy top-quality
+                            courts and certified coaches in a friendly </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-col">
+                <h4 class="col-title">Our Services</h4>
+                <ul class="links-list">
+                    <li><a href="ServicesPage.html#courts">Book a Court</a></li>
+                    <li><a href="ServicesPage.html#coaches">Certified Coaches</a></li>
+                    <li><a href="ServicesPage.html#equipment">Equipment reservation</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-col">
+                <h4 class="col-title">Connect us</h4>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path
+                                d="M6.6 10.2a15.05 15.05 0 006.2 6.2l1.8-1.8a1 1 0 01.9-.25c.98.25 2 .38 3.03.38a1 1 0 011 1v3a1 1 0 01-1 1C10.07 20.5 3.5 13.93 3.5 5a1 1 0 011-1h3a1 1 0 011 1c0 1.02.13 2.05.38 3.03a1 1 0 01-.25.9L6.6 10.2z"
+                                fill="currentColor" />
+                        </svg>
+                        <span>+966 555 2022</span>
+                    </li>
+                    <li class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path
+                                d="M3 6.5A2.5 2.5 0 015.5 4h13A2.5 2.5 0 0121 6.5v11A2.5 2.5 0 0118.5 20h-13A2.5 2.5 0 013 17.5v-11zM5 7v.9l7 4.6 7-4.6V7l-7 4.6L5 7z"
+                                fill="currentColor" />
+                        </svg>
+                        <span>support@NajdiPadel.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Follow Us -->
+            <div class="footer-col follow-col">
+                <div class="follow-section">
+                    <h4 class="col-title">Follow Us</h4>
+                    <div class="social-images">
+                        <a href="#" target="_blank">
+                            <img src="images/x.png" alt="Twitter">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="images/Instagram.png" alt="Instagram">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="images/snap.png" alt="Snapchat">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="images/facebook.png" alt="Facebook">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="divider"></div>
+            <div id="clock" class="footer-clock"></div>
+            <div class="copyright">© 2025 Website</div>
+        </div>
+    </footer>
+
+    <button id="backToTop">↑</button>
+
+    <script>
+
+        const backToTopBtn = document.getElementById("backToTop");
+        const clockEl = document.getElementById("clock");
+
+
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        });
+
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit"
+            });
+            if (clockEl) {
+                clockEl.textContent = timeString;
+            }
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+    <script>
+        const menuBtn = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuBtn.addEventListener("click", () => {
+            navLinks.classList.toggle("show");
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
