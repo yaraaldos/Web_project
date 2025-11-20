@@ -6,10 +6,13 @@
     <title>Staff Member – Sara Mohammed</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="global.css">
     <style>
         /* ==================== Sara-about us Styles ==================== */
-         .site-footer{ margin-top: auto; }
+        .site-footer {
+            margin-top: auto;
+        }
 
         :root {
             --blue-900: #2F476D;
@@ -334,8 +337,14 @@
             border-collapse: collapse;
             width: 100%;
         }
-
-        /* =========================================================
+        body.dark .profile-table th,
+        body.dark .profile-table td,
+        body.dark .profile-table a {
+            background-color: #0f1a2b !important; /* خلفية الخلايا في الدارك مود */
+            color: #ffffff !important; /* لون النص */
+            border-color: #1f3553 !important; /* حدود أوضح */
+        }
+            /* =========================================================
         END OF about us STYLES
         ========================================================= */
 
@@ -348,7 +357,9 @@
                     <img src="images/logo-nav.png" alt="Najdi Padel">
                     <div class="logo-name">Najdi Padel</div>
                 </a>
-
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <div class="nav-links" id="navLinks">
                     <ul>
                         <li><a href="home.html" id="home">Home</a></li>
@@ -363,17 +374,17 @@
             </nav>
         </header>
 
-<div class="breadcrumbs">
-        <a href="home.html">Home</a> >
-        <a href="_index.html">About Us</a> >
-        <span>Staff member Profile</span>
+        <div class="breadcrumbs">
+            <a href="home.html">Home</a> >
+            <a href="_index.html">About Us</a> >
+            <span>Staff member Profile</span>
         </div>
 
         <h1 class="page-title">Staff Member Profile</h1>
 
         <section class="profile-wrapper">
             <h2>Profile Information</h2>
-            <table class="profile-table staff-profile" style="border-collapse: collapse; width:100%;">
+            <table class="profile-table staff-table" style="border-collapse: collapse; width:100%;">
 
                 <tr>
                     <th>Name</th>
@@ -405,44 +416,44 @@
                     </td>
 
                     <!-- Skills  -->
-                   <td rowspan="2" style="vertical-align: top; border:1px solid #ccc; padding:1rem;">
-  <ul style="margin:0; padding-left:1.2rem; list-style-type:disc;">
-    <li>
-      Coaching Fundamentals
-      <ul style="list-style-type:circle; margin-top:0.3rem; margin-left:1.5rem;">
-        <li>Teaching Proper Grip & Posture</li>
-      </ul>
-    </li>
+                    <td rowspan="2" style="vertical-align: top; border:1px solid #ccc; padding:1rem;">
+                        <ul style="margin:0; padding-left:1.2rem; list-style-type:disc;">
+                            <li>
+                                Coaching Fundamentals
+                                <ul style="list-style-type:circle; margin-top:0.3rem; margin-left:1.5rem;">
+                                    <li>Teaching Proper Grip & Posture</li>
+                                </ul>
+                            </li>
 
-    <li>
-      Player Support
-      <ul style="list-style-type:circle; margin-top:0.3rem; margin-left:1.5rem;">
-        <li>Encouraging Consistency in Practice</li>
-      </ul>
-    </li>
-  </ul>
-</td>
+                            <li>
+                                Player Support
+                                <ul style="list-style-type:circle; margin-top:0.3rem; margin-left:1.5rem;">
+                                    <li>Encouraging Consistency in Practice</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
 
 
 
                     <!-- Education  -->
-                   <td rowspan="2" style="vertical-align: top; border:1px solid #ccc; padding:1rem;">
-  <ul style="margin:0; padding-left:1.2rem; list-style-type:disc;">
-    <li>
-      2017–2021
-      <ul style="list-style-type:circle; margin-top:0.3rem; margin-left:1.5rem;">
-        <li>B.Sc. in Physical Education</li>
-      </ul>
-    </li>
+                    <td rowspan="2" style="vertical-align: top; border:1px solid #ccc; padding:1rem;">
+                        <ul style="margin:0; padding-left:1.2rem; list-style-type:disc;">
+                            <li>
+                                2017–2021
+                                <ul style="list-style-type:circle; margin-top:0.3rem; margin-left:1.5rem;">
+                                    <li>B.Sc. in Physical Education</li>
+                                </ul>
+                            </li>
 
-    <li>
-      2022
-      <ul style="list-style-type:circle; margin-top:0.3rem; margin-left:1.5rem;">
-        <li>Junior Padel Instructor License</li>
-      </ul>
-    </li>
-  </ul>
-</td>
+                            <li>
+                                2022
+                                <ul style="list-style-type:circle; margin-top:0.3rem; margin-left:1.5rem;">
+                                    <li>Junior Padel Instructor License</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
 
                 </tr>
 
@@ -533,6 +544,6 @@
                 <div class="copyright">©️ 2025 Website</div>
             </div>
         </footer>
-
+        <script src="script.js" defer></script>
     </body>
 </html>
