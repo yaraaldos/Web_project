@@ -547,3 +547,7 @@ body.dark .breadcrumbs {
 body.dark .breadcrumbs span {
     color: #E8ECF1;
 }
+
+body.dark .breadcrumbs a {
+    color: #C7D4E5;   
+}
