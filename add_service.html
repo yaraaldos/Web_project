@@ -5,6 +5,7 @@
   <meta charset="UTF-8" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add a New Service</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" >
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="global.css">
 
@@ -33,6 +34,31 @@ html, body {
   color: #1F1F1F;
   background-color: #EEEDE7;
 }
+
+
+main {
+    margin-bottom: 80px; 
+}
+
+
+/*__________ dark mode __________*/
+
+body.dark .form-card {
+    background-color: #2f476d ;
+    color: #F3F5E7 ;
+}
+
+
+
+body.dark .btn-dark {
+    background-color: #1d3150 ;
+    color: #ffffff;
+}
+body.dark .btn-dark:hover {
+    background-color: #162a48;
+}
+
+
   </style>
 
 </head>
@@ -42,6 +68,9 @@ html, body {
       <img src="images/logo-nav.png" alt="Najdi Padel">
       <div class="logo-name">Najdi Padel</div>
     </a>
+    <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+    </button>
 	
     <div class="nav-links" id="navLinks">
       <ul>
@@ -77,7 +106,7 @@ html, body {
        <div class="form-grid">
         <label class="field">
           <span>Service Name</span>
-          <input type="text" name="service_name" placeholder="Enter service name" >
+          <input id="addService_name" type="text" name="service_name" placeholder="Enter service name" >
         </label>
        </div>
 
@@ -85,7 +114,7 @@ html, body {
       <!-- service price -->
         <label class="field">
           <span>Service Price</span>
-          <input type="text" name="service_price" placeholder="Enter service price" >
+          <input id="addService_price" type="text" name="service_price" placeholder="Enter service price" >
         </label>
       </div>
       
@@ -93,19 +122,24 @@ html, body {
       <!-- Description -->
       <label class="field">
         <span>Service Description</span>
-        <textarea name="description" rows="3" placeholder="Write the service description here..." ></textarea>
+        <textarea id="addService_description" name="description" rows="3" placeholder="Write the service description here..." ></textarea>
       </label>
 
       <!--picture-->
       <div class="form-grid"> 
       <label class="field">
         <span>Service Photo</span>
-        <input type="file" name="photo" >
+
+        <!-- <input id="addService_image" type="text" placeholder="Enter image URL"> -->
+        <input id="addService_image" type="file" name="photo" >
       </label>
       </div>
 
 
-      <button type="submit" class="btn-dark" style="display:block; margin:10px auto;">Submit</button>
+<button id="addService_button" type="button" class="btn-dark" style="display:block; margin:10px auto;">
+    Submit
+</button>
+
     </form>
 	</section>
 	
@@ -188,6 +222,81 @@ html, body {
             <div class="copyright">© 2025 Website</div>
         </div>
     </footer>
+<!-- _____________________java script____________________ -->
+       <script>
+        function addService_save(event) {
+
+            // Stop page refresh so we can handle data saving 
+            event.preventDefault();
+
+           // get the service data and remove spaces from start/end
+            var addservice_name = document.getElementById("addService_name").value.trim();
+            var addservice_price = document.getElementById("addService_price").value.trim();
+            var addservice_desc = document.getElementById("addService_description").value.trim();
+            var fileInput = document.getElementById("addService_image");
+
+                // Check if any field is empty 
+            if (!addservice_name || !addservice_price || !addservice_desc || fileInput.files.length === 0) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+                // make sure service name not start with a number
+            if (/^[0-9]/.test(addservice_name)) {
+                alert("Service name cannot start with numbers.");
+                return;
+            }
+
+            //make sure price is a number
+            if (isNaN(addservice_price)) {
+                alert("Price must be a number.");
+                return;
+            }
+
+            // Convert the image file into a string to save it in localStorage
+            var file = fileInput.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+
+                 // create a new service object 
+                var newService = {
+                    name: addservice_name,
+                    price: addservice_price,
+                    description: addservice_desc,
+                    image: e.target.result   
+                };
+
+                // get old services from storage 
+                var old = localStorage.getItem("services");
+                var services = old ? JSON.parse(old) : [];
+
+                 // add the new service to the list
+                services.push(newService);
+
+                //save list to local storage 
+                localStorage.setItem("services", JSON.stringify(services));
+
+                alert("Service added successfully!");
+
+                // clear the form fields after saving
+                document.getElementById("addService_name").value = "";
+                document.getElementById("addService_price").value = "";
+                document.getElementById("addService_description").value = "";
+                document.getElementById("addService_image").value = "";
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+        // run only on add service page
+        var btn = document.getElementById("addService_button");
+        if (btn) btn.addEventListener("click", addService_save);
+
+
+
+</script>
+      <script src="script.js" defer></script>
 </body>
 </html>
 

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Provider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" >
     <link rel="stylesheet" href="global.css">
     
     <!-- for the font -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=arrow_forward_ios" >
-
+    <!-- for the arrows -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
 <style> 
 
 
@@ -144,16 +144,6 @@ html, body {
 }
 
 
-.scrolling-arrow {
-  position: absolute;
-  right:70px; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  padding: 12px;
-}
-
 
 /* ____________manage staff & add service ________*/
 
@@ -270,10 +260,7 @@ html, body {
     object-fit: cover;
   }
 
-  .scrolling-arrow {
-      right:-30px; 
 
-  }
 
   .rectangle-container {
     width: 90%;
@@ -305,8 +292,91 @@ html, body {
   width: 130px; 
 
 }
+
 }
   
+
+
+
+/* --------------------for the arrows---------*/
+.provider-swiper {
+    width: 100%;
+    padding: 20px 0;
+   
+
+}
+
+.provider-swiper .swiper-button-prev,
+.provider-swiper .swiper-button-next {
+    color: #2f476d;
+    top: 60%;
+    transform: translateY(-50%);
+}
+
+.provider-swiper .swiper-button-prev,
+.provider-swiper .swiper-button-next {
+    display: none;
+}
+
+/* _____________    dark mode ____________________*/
+
+body.dark .provider-services {
+    background-color: #111A2B;
+    color: #E8ECF1;
+}
+
+body.dark .provider-service-card {
+    background-color: #2f476d; 
+    color: #E8ECF1;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+body.dark .provider-service-card h3 {
+    color: #E8ECF1;
+}
+
+body.dark .provider-service-card p {
+    color: #CED6E0 !important;
+}
+
+body.dark .provider-service-card img {
+    filter: brightness(0.9);
+}
+
+body.dark #provider_emptyMessage {
+    color: #E8ECF1 !important;
+}
+
+body.dark .provider-services h2 {
+    color: #E8ECF1;
+    border-bottom-color: #A8B288;
+}
+/* #1B2942 */
+body.dark .rectangle-container {
+    background-color: #2f476d;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+body.dark .rectangle-container .details h2 {
+    color: #E8ECF1;
+}
+
+body.dark .rectangle-container .details p {
+    color: #CED6E0;
+}
+
+body.dark .provider-button {
+    color: #1B2942; }
+
+body.dark .provider-button:hover {
+    color: #CED6E0 }
+
+body.dark .provider-swiper .swiper-button-prev,
+body.dark .provider-swiper .swiper-button-next {
+    color: #A8B288;
+}
+
+
 </style>
  
 </head>
@@ -317,7 +387,11 @@ html, body {
       <img src="images/logo-nav.png" alt="logo">
       <div class="logo-name">Najdi Padel</div>
     </a>
-	
+        
+      <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+      </button>
+    
     <div class="nav-links" id="navLinks">
       <ul>
         <li><a href="home.html" id="home">Home</a></li>
@@ -331,6 +405,7 @@ html, body {
     </div>
   </nav>
     </header>
+
     <!-- bread crumbs -->
        <div class="breadcrumbs">
         <a href="home.html">Home</a> >
@@ -350,46 +425,23 @@ html, body {
       <section class="provider-services">
           <h2>Services</h2>
 
+          
+          <p id="provider_emptyMessage" 
+            style="color:#2f476d; font-size:20px; text-align:center; margin-top:150px;">
+            Services will be displayed here.
+          </p>
           <div class="provider-cards-container">
-              <div class="provider-cards">
-                  <div class="provider-service-card">
-                      <img src="images/court2.jpg" alt="padel court">
-                      <span class="badge badge-court">Court Booking</span>
+                <div class="swiper provider-swiper">
+                  <div class="swiper-wrapper provider-cards"></div>
 
-                      <h3>Padel Way</h3>
-                      <p>130.00 SR</p>
-                  </div>
-
-                  <div class="provider-service-card">
-                      <img src="images/racket2.jpg" alt="padel equipments" >
-                      <span class="badge badge-equip">Equipment Rental</span>
-
-                      <h3>Racket & Balls</h3>
-                      <p>150.00 SR</p>
-                  </div>
-
-                  <div class="provider-service-card">
-                  <img src="images/coach3ed.jpg" alt="padel coach">
-                 <span class="badge badge-coach">Coach Session</span>
-
-                      <h3>Ryan Ahmed</h3>
-                      <p>200.00 SR</p>
-                  </div>
-
-                  <div class="provider-service-card">
-                  <img src="images/court1.jpg" alt="padel court">
-                   <span class="badge badge-court">Court Booking</span>
-                    
-                      <h3>Padel Plus</h3>
-                      <p>150.00 SR</p>
-                  </div>
+                  <!-- arrows -->
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
               </div>
-
-              <div class="scrolling-arrow">
-              <span class="material-symbols-outlined">arrow_forward_ios</span>
-              </div>
-          </div>    
+          </div>
       </section>
+
+
 
   <!-- manage staff & add service --> 
     <section id="rectangles">
@@ -423,7 +475,7 @@ html, body {
     </section>
   </main>
 
-
+<!-- ______________________footer____________________ -->
  <footer class="site-footer">
         <div class="footer-inner">
             <!-- Logo + text -->
@@ -501,7 +553,124 @@ html, body {
             <div class="copyright">© 2025 Website</div>
         </div>
     </footer>
-     
+
+    
+
+
+
+<!-- _________________java script______________________ -->
+
+   <script>
+
+        //to loads and display all services from localStorage 
+        function provider_displayServices() {
+         
+        // get the string stored in localStorage and  save to services array
+        var stored = localStorage.getItem("services");
+        var services = stored ? JSON.parse(stored) : [];
+
+        // find the element that will hold all cards
+        var container = document.querySelector(".provider-cards");
+        if (!container) return;
+         
+        // clear the container before adding
+        container.innerHTML = "";
+
+        // get the if empty message 
+        var emptyMsg = document.getElementById("provider_emptyMessage");
+
+        //if there are no services stored:show message
+        if (services.length === 0) {
+            if (emptyMsg) emptyMsg.style.display = "block";
+            return;
+        }
+
+        //else:hide message
+        if (emptyMsg) emptyMsg.style.display = "none";
+
+        // create cards by looping through each service in services list
+        services.forEach(s => {
+
+            // create a new card <div> 
+            var card = document.createElement("div");
+            card.className = "provider-service-card swiper-slide";
+
+            // create <img> and set the image to the saved image then attach it inside the card
+            var img = document.createElement("img");
+            img.src = s.image;
+            card.appendChild(img);
+
+          
+            // add service name
+            var title = document.createElement("h3");
+            title.textContent = s.name;
+            card.appendChild(title);
+
+            // add service description and style
+            var desc = document.createElement("p");
+            desc.textContent = s.description;
+            desc.style.color = "#555";
+            desc.style.marginTop = "6px";
+            card.appendChild(desc);
+
+            //add the service price and style
+            var price = document.createElement("p");
+            price.textContent = s.price + " SR";
+            price.style.marginTop = "8px";
+            card.appendChild(price);
+
+            // append the card to the services container
+            container.appendChild(card);
+        });
+
+        // display Swiper depending on count
+        setTimeout(() => {
+            let count = services.length;
+
+            // if 4 or fewer cards :no arrows
+            if (count <= 4) {
+
+                document.querySelector(".swiper-button-next").style.display = "none";
+                document.querySelector(".swiper-button-prev").style.display = "none";
+                
+                container.style.justifyContent = "center";
+                new Swiper(".provider-swiper", {
+                    slidesPerView: count,
+                    spaceBetween: 30,
+                    allowTouchMove: false
+                });
+
+                return;
+            }
+
+            // if > 4 show arrows 
+            document.querySelector(".swiper-button-next").style.display = "block";
+            document.querySelector(".swiper-button-prev").style.display = "block";
+            container.style.justifyContent = "flex-start";
+            new Swiper(".provider-swiper", {
+                    slidesPerView: 4,
+                    spaceBetween: 10,
+
+        // enable arrow controls
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        }
+    });
+
+        }, 50); // Wait 50ms before
+    }
+
+    // run the function when html is loaded
+    window.addEventListener("DOMContentLoaded", provider_displayServices);
+   </script>
+   
+  <script src="script.js" defer></script>
+ <!-- to scroll -->
+ <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+ <!-- to clear storage: localStorage.removeItem("services"); ` -->
+
 </body>
 
 
