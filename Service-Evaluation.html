@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Evaluation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="global.css" type="text/css" >
+  
+  <style>
+    html, body {
+  font-family: "Cormorant Garamond", serif;
+  color: #1F1F1F;
+  background-color: #EEEDE7;
+  margin: 0;
+}
+
+  .header-image {
+  width: 100%;
+  height: 400px;  
+  background-image: 
+    linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
+    url("images/court.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;    /* vertically center the title */
+  justify-content: center; /* horizontally center */
+  margin-top: 0;         
+  padding: 0;
+}
+
+.main-title h1 {
+  color: white;
+  font-size: 60px;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  margin: 0;
+}
+
+/*form card */
+
+.form-card {
+  background-color: #A8B68B;  
+  border-radius: 10px;
+  padding: 22px;
+  max-width: 760px;
+  margin: 20px auto 40px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+
+.field { display: block; margin-bottom: 14px; }
+.field span {
+  display: block; /*Makes span (header) take full line above the input*/
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #1F1F1F;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+  width: 100%;
+  border: 1px solid #2F4B3A;   
+  border-radius: 8px;
+  padding: 10px 12px;
+  font: inherit;
+  color: #1F1F1F;
+  background: #F3F5E7;           
+}
+
+.form-card button.btn-dark { margin-top: 6px; }
+
+
+/* Star rating in service eval*/
+/* Star rating always visible */
+.rate {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+/* Hide the radio inputs */
+.rate input {
+  display: none;
+}
+
+/* Show all empty stars by default */
+.rate label {
+  width: 25px;
+  height: 25px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232F4B3A' stroke-width='2'><polygon points='12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2'/></svg>") center/contain no-repeat;
+  cursor: pointer;
+  transition: 0.2s;
+  opacity: 0.8;
+}
+
+/* When hovering or checked fill color */
+.rate label:hover,
+.rate label:hover ~ label,
+.rate input:checked ~ label {
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232F4B3A' stroke='%232F4B3A' stroke-width='2'><polygon points='12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2'/></svg>") center/contain no-repeat;
+  opacity: 1;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+    box-sizing: border-box;
+}
+
+/* DARK MODE FOR SERVICE EVALUATION PAGE*/
+
+body.dark .form-card {
+    background-color: #1B2942 !important;
+    color: #E8ECF1 !important;
+}
+
+body.dark .form-card input,
+body.dark .form-card select,
+body.dark .form-card textarea {
+    background-color: #111A2B !important;
+    color: #E8ECF1 !important;
+    border: 1px solid #C7D4E5 !important;
+}
+
+body.dark .btn-dark {
+    background-color: #A8B288 !important;
+    color: #111A2B !important;
+}
+
+body.dark .btn-dark:hover {
+    background-color: #C1C8A0 !important;
+}
+  </style>
+</head>
+
+
+<body>
+  <nav>
+        <a id="logo" href="home.html">
+            <img src="images/logo-nav.png" alt="Najdi Padel">
+            <div class="logo-name">Najdi Padel</div>
+        </a>
+<button class="menu-toggle" id="menuToggle">
+  <i class="fas fa-bars"></i> 
+</button>
+        <div class="nav-links" id="navLinks">
+            <ul>
+                <li><a href="home.html" id="home">Home</a></li>
+                <li><a href="ServicesPage.html" id="services">Services</a></li>
+                <li><a href="Customer-Dashboard.html" id="customer">Customer</a></li>
+                <li><a href="service_provider.html" id="provider">Provider</a></li>
+                <li><a href="_index.html" id="about-us">About Us</a></li>
+                <li><a href="FAQ.html" id="FAQ">FAQ</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+  <div class="breadcrumbs">
+  <a href="home.html">Home</a> >
+  <a href="Customer-Dashboard.html">Customer</a> >
+  <span>Service Evaluation</span>
+  
+</div>   
+  <section class="header-image">
+    <div class="main-title">
+      <h1>Service Evaluation</h1>
+    </div>
+  </section>
+
+   
+
+
+  <main class="dashboard">
+  
+
+  <form class="form-card" id="evalForm" action="#" method="get">
+  <h2 id="form-title" style="text-align:center; font-size: 40px;">Service Evaluation Form</h2>
+  
+    <!-- Select previous service -->
+    <label class="field">
+      <span>Select Previous Service</span>
+      <select name="previous_service" id="evalService">
+        <option value="">Select…</option>
+        <option>Court 3 — Najd Arena</option>
+        <option>Racket + 3 Balls</option>
+        <option>Training with Amal</option>
+      </select>
+    </label>
+
+    <!-- Rating -->
+    
+<div class="field">
+  <span>Rate the Service</span>
+
+  <div class="rate">
+    <input type="radio" id="star5" name="rate" value="5">
+    <label for="star5" title="5 stars"></label>
+
+    <input type="radio" id="star4" name="rate" value="4">
+    <label for="star4" title="4 stars"></label>
+
+    <input type="radio" id="star3" name="rate" value="3">
+    <label for="star3" title="3 stars"></label>
+
+    <input type="radio" id="star2" name="rate" value="2">
+    <label for="star2" title="2 stars"></label>
+
+    <input type="radio" id="star1" name="rate" value="1">
+    <label for="star1" title="1 star"></label>
+  </div>
+</div>
+
+
+    <!-- Feedback -->
+    <label class="field">
+      <span>Write Feedback</span>
+      <textarea name="feedback" id="evalFeedback" rows="5" placeholder="Write your feedback here..."></textarea>
+    </label>
+
+    <button type="submit" class="btn-dark" style="display:block; margin:10px auto;">Submit</button>
+  </form>
+</main>
+
+
+  <!-- FOOTER-->
+<footer class="site-footer">
+        <div class="footer-inner">
+            <!-- Logo + text -->
+            <div class="footer-col footer-brand">
+                <div class="brand-left">
+                    <div class="logo-circle">
+                        <img src="images/logo.png" height="150" alt="Najdi Padel Logo">
+
+                    </div>
+                    <div class="brand-text">
+                        <p> <strong> Najdi Padel</strong> <br> where passion meets precision.<br> Enjoy top-quality
+                            courts and certified coaches in a friendly </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-col">
+                <h4 class="col-title">Our Services</h4>
+                <ul class="links-list">
+                    <li><a href="ServicesPage.html#courts">Book a Court</a></li>
+                    <li><a href="ServicesPage.html#coaches">Certified Coaches</a></li>
+                    <li><a href="ServicesPage.html#equipment">Equipment reservation</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-col">
+                <h4 class="col-title">Connect us</h4>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path
+                                d="M6.6 10.2a15.05 15.05 0 006.2 6.2l1.8-1.8a1 1 0 01.9-.25c.98.25 2 .38 3.03.38a1 1 0 011 1v3a1 1 0 01-1 1C10.07 20.5 3.5 13.93 3.5 5a1 1 0 011-1h3a1 1 0 011 1c0 1.02.13 2.05.38 3.03a1 1 0 01-.25.9L6.6 10.2z"
+                                fill="currentColor" />
+                        </svg>
+                        <span>+966 555 2022</span>
+                    </li>
+                    <li class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path
+                                d="M3 6.5A2.5 2.5 0 015.5 4h13A2.5 2.5 0 0121 6.5v11A2.5 2.5 0 0118.5 20h-13A2.5 2.5 0 013 17.5v-11zM5 7v.9l7 4.6 7-4.6V7l-7 4.6L5 7z"
+                                fill="currentColor" />
+                        </svg>
+                        <span>support@NajdiPadel.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Follow Us -->
+            <div class="footer-col follow-col">
+                <div class="follow-section">
+                    <h4 class="col-title">Follow Us</h4>
+                    <div class="social-images">
+                        <a href="#" target="_blank">
+                            <img src="images/x.png" alt="Twitter">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="images/Instagram.png" alt="Instagram">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="images/snap.png" alt="Snapchat">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="images/facebook.png" alt="Facebook">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="divider"></div>
+            <div class="copyright">© 2025 Website</div>
+        </div>
+    </footer>
+
+ <script src="script.js" defer></script>
+
+    <script>
+window.onload = function () {
+
+    var form= document.getElementById("evalForm");
+    if (!form) return; 
+
+    var service = document.getElementById("evalService");
+    var feedback= document.getElementById("evalFeedback");
+
+    form.onsubmit = function (event) {
+        event.preventDefault(); // stop normal submit
+
+        var s = service.value;
+        var fb = feedback.value.trim();
+        var star = document.querySelector("input[name='rate']:checked");
+        var rate = star ? parseInt(star.value) : null;
+
+        // Service selected?
+        if (s === "") {
+            alert("Please select a service to evaluate.");
+            return;
+        }
+
+        //Rating selected?
+        if (rate === null || isNaN(rate)) {
+            alert("Please choose a rating.");
+            return;
+        }
+
+        //Feedback filled?
+        if (fb === "") {
+            alert("Please write your feedback.");
+            return;
+        }
+
+        // 4)Form is valid → check rating and show message
+        if (rate >= 4) {
+            alert("Thank you for your positive feedback! We are glad you enjoyed the service.");
+        } else {
+            alert("We are sorry the service did not fully meet your expectations. Thank you for your feedback.");
+        }
+
+        // 5)After showing the message, go back to customer dashboard
+        window.location.href = "Customer-Dashboard.html";
+    };
+};
+</script>
+
+
+</body>
+
+
+</html>
