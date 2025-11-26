@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="global.css" >
+  
+    <style>
+      html, body {
+  font-family: "Cormorant Garamond", serif;
+  color: #1F1F1F;
+  background-color: #EEEDE7;
+  margin: 0;
+}
+
+
+.header-image {
+  width: 100%;
+  height: 400px;  
+  background-image: 
+    linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
+    url("images/court.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;    /* vertically center the title */
+  justify-content: center; /* horizontally center */
+  margin-top: 0;         
+  padding: 0;
+}
+
+.main-title h1 {
+  color: white;
+  font-size: 60px;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  margin: 0; }
+  
+  /*form card */
+.Name2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* splits into 2 equal columns */
+  gap: 14px; /* space between the two */
+} 
+
+.form-card {
+  background-color: #A8B68B;  
+  border-radius: 10px;
+  padding: 22px;
+  max-width: 760px;
+  margin: 20px auto 40px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+
+.field { display: block; margin-bottom: 14px; }
+.field span {
+  display: block; /*Makes span (header) take full line above the input*/
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #1F1F1F;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+  width: 100%;
+  border: 1px solid #2F4B3A;   
+  border-radius: 8px;
+  padding: 10px 12px;
+  font: inherit;
+  color: #1F1F1F;
+  background: #F3F5E7;           
+}
+
+.form-card button.btn-dark { margin-top: 6px; }
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+    box-sizing: border-box;
+}
+
+/*DARK MODE FOR REQUEST SERVICE PAGE*/
+
+body.dark .form-card {
+    background-color: #1B2942 !important;
+    color: #E8ECF1 !important;
+    border-color: #A8B288 !important;
+}
+
+body.dark .form-card input,
+body.dark .form-card select,
+body.dark .form-card textarea {
+    background-color: #111A2B !important;
+    color: #E8ECF1 !important;
+    border: 1px solid #C7D4E5 !important;
+}
+
+body.dark .btn-dark {
+    background-color: #A8B288 !important;
+    color: #111A2B !important;
+}
+
+body.dark .btn-dark:hover {
+    background-color: #C1C8A0 !important;
+}
+
+body.dark #requestsAddedBox {
+    background-color: #1B2942 !important;
+    color: #E8ECF1 !important;
+    border: 1px solid #A8B288 !important;
+}
+
+  </style>
+</head>
+
+
+<body>
+  <nav>
+        <a id="logo" href="home.html">
+            <img src="images/logo.png" alt="Najdi Padel">
+            <div class="logo-name">Najdi Padel</div>
+        </a>
+<button class="menu-toggle" id="menuToggle">
+  <i class="fas fa-bars"></i> 
+</button>
+        <div class="nav-links" id="navLinks">
+            <ul>
+                <li><a href="home.html" id="home">Home</a></li>
+                <li><a href="ServicesPage.html" id="services">Services</a></li>
+                <li><a href="Customer-Dashboard.html" id="customer">Customer</a></li>
+                <li><a href="service_provider.html" id="provider">Provider</a></li>
+                <li><a href="_index.html" id="about-us">About Us</a></li>
+                <li><a href="FAQ.html" id="FAQ">FAQ</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+  <div class="breadcrumbs">
+  <a href="home.html">Home</a> >
+  <a href="Customer-Dashboard.html">Customer</a> >
+  <span>Request a Service</span>
+</div> 
+
+  <section class="header-image">
+    <div class="main-title">
+      <h1>Request a Service</h1>
+    </div>
+  </section>
+
+  
+  
+
+
+  <main class="dashboard">
+    
+
+   
+    <form class="form-card" id="requestForm" action="#" method="get">
+	<h2 style="text-align:center; font-size: 40px;">Service Request Form</h2>
+      <!-- Choose service dropdown -->
+      <label class="field">
+        <span>Choose Service</span>
+        <select name="service" id="reqService">
+          <option value="">Select…</option>
+          <option>Book Court</option>
+          <option>Book Equipment</option>
+          <option>Book Session</option>
+        </select>
+      </label>
+
+      
+      <div class="Name2">
+        <label class="field">
+          <span>First Name</span>
+           <input type="text" name="first_name" id="firstName" placeholder="Enter your first name">
+        </label>
+        <label class="field">
+          <span>Last Name</span>
+          <input type="text" name="last_name" id="lastName" placeholder="Enter your last name">
+        </label>
+      </div>
+
+      <!--date-->
+      <label class="field">
+        <span>Due Date</span>
+        <input type="date" name="due" id="dueDate">
+      </label>
+
+      <!-- Description -->
+      <label class="field">
+        <span>Request Description</span>
+         <textarea name="description" id="reqDesc" rows="5" placeholder="Write your feedback here..."></textarea>
+      </label>
+
+      <button type="submit" class="btn-dark" style="display:block; margin:10px auto;">Submit</button>
+    </form>
+
+    <!-- Requests added while staying on this page will appear here -->
+      <div id="requestsArea"></div>
+	
+	
+	
+  </main>
+
+  <!-- FOOTER -->
+   <footer class="site-footer">
+        <div class="footer-inner">
+            <!-- Logo + text -->
+            <div class="footer-col footer-brand">
+                <div class="brand-left">
+                    <div class="logo-circle">
+                        <img src="images/logo.png" height="150" alt="Najdi Padel Logo">
+
+                    </div>
+                    <div class="brand-text">
+                        <p> <strong> Najdi Padel</strong> <br> where passion meets precision.<br> Enjoy top-quality
+                            courts and certified coaches in a friendly </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-col">
+                <h4 class="col-title">Our Services</h4>
+                <ul class="links-list">
+                    <li><a href="ServicesPage.html#courts">Book a Court</a></li>
+                    <li><a href="ServicesPage.html#coaches">Certified Coaches</a></li>
+                    <li><a href="ServicesPage.html#equipment">Equipment reservation</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-col">
+                <h4 class="col-title">Connect us</h4>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path
+                                d="M6.6 10.2a15.05 15.05 0 006.2 6.2l1.8-1.8a1 1 0 01.9-.25c.98.25 2 .38 3.03.38a1 1 0 011 1v3a1 1 0 01-1 1C10.07 20.5 3.5 13.93 3.5 5a1 1 0 011-1h3a1 1 0 011 1c0 1.02.13 2.05.38 3.03a1 1 0 01-.25.9L6.6 10.2z"
+                                fill="currentColor" />
+                        </svg>
+                        <span>+966 555 2022</span>
+                    </li>
+                    <li class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path
+                                d="M3 6.5A2.5 2.5 0 015.5 4h13A2.5 2.5 0 0121 6.5v11A2.5 2.5 0 0118.5 20h-13A2.5 2.5 0 013 17.5v-11zM5 7v.9l7 4.6 7-4.6V7l-7 4.6L5 7z"
+                                fill="currentColor" />
+                        </svg>
+                        <span>support@NajdiPadel.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Follow Us -->
+            <div class="footer-col follow-col">
+                <div class="follow-section">
+                    <h4 class="col-title">Follow Us</h4>
+                    <div class="social-images">
+                        <a href="#" target="_blank">
+                            <img src="images/x.png" alt="Twitter">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="images/Instagram.png" alt="Instagram">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="images/snap.png" alt="Snapchat">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="images/facebook.png" alt="Facebook">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="divider"></div>
+            <div class="copyright">© 2025 Website</div>
+        </div>
+    </footer>
+ <script src="script.js" defer></script>
+
+   <script>
+window.onload = function () {
+
+    var form= document.getElementById("requestForm");
+    var service= document.getElementById("reqService");
+    var firstName= document.getElementById("firstName");
+    var lastName= document.getElementById("lastName");
+    var dueDate= document.getElementById("dueDate");
+    var desc= document.getElementById("reqDesc");
+    var area = document.getElementById("requestsArea");
+
+    form.onsubmit = function (event) {
+        event.preventDefault(); // stop normal submit
+
+        var s = service.value;
+        var f = firstName.value.trim();
+        var l = lastName.value.trim();
+        var d = dueDate.value;
+        var text= desc.value.trim();
+
+        //Service selected?
+        if (s === "") {
+            alert("Please choose a service.");
+            return;
+        }
+
+        //Full name
+        if (f === "" || l === "") {
+            alert("Please enter your full name (first and last).");
+            return;
+        }
+
+        //Name must NOT contain numbers or ? ! @
+        var badPattern = /[0-9?!@]/;
+        if (badPattern.test(f) || badPattern.test(l)) {
+            alert("Name cannot contain numbers or the characters ?, !, @.");
+            return;
+        }
+
+        //Due date should not be very soon (at least 3 days from today)
+        if (d === "") {
+            alert("Please choose a due date.");
+            return;
+        }
+
+        var today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        var due = new Date(d);
+        due.setHours(0, 0, 0, 0);
+
+        var diffDays = (due - today) / (1000 * 60 * 60 * 24);
+
+        
+        if (diffDays < 3) {
+            alert("Due date must be at least 3 days from today.");
+            return;
+        }
+
+        // 5)Description length
+        if (text.length < 100) {
+            alert("Request description must be at least 100 characters.");
+            return;
+        }
+
+        // 6)If all inputs are valid confirmation message
+        var stayHere = confirm(
+            "Your request has been submitted.\n\n" +
+            "Press OK to stay on this page.\n" +
+            "Press Cancel to return to the Customer Dashboard."
+        );
+
+        // If user chooses to leave go back to dashboard
+        if (!stayHere) {
+            window.location.href = "Customer-Dashboard.html";
+            return;
+        }
+
+        // 7) User chose to STAY show request info on this page
+        //    (requests stored in this page)
+        var box = document.createElement("div");
+        box.style.backgroundColor = "#F3F5E7";
+        box.style.border = "1px solid #2F4B3A";
+        box.style.borderRadius = "8px";
+        box.style.padding = "10px";
+        box.style.marginTop = "10px";
+
+        box.innerHTML =
+            "<strong>Service:</strong> " + s + "<br>" +
+            "<strong>Customer:</strong> " + f + " " + l + "<br>" +
+            "<strong>Due date:</strong> " + d + "<br>" +
+            "<strong>Description:</strong> " + text;
+
+        area.appendChild(box);
+
+        // 8) Clear form so customer can add another request
+        form.reset();
+    };
+};
+</script>
+
+
+
+</body>
+</html>
