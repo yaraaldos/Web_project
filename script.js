@@ -55,158 +55,166 @@ document.addEventListener("DOMContentLoaded", () => {
             document.body.classList.remove("dark");
             localStorage.setItem("theme", "light");
         });
-           
 
-//-----------------------------------Aleen managestaff-----------------------------------
+        darkBtn.addEventListener("click", () => {
+            document.body.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+        });
 
-
-document.addEventListener("DOMContentLoaded", function() {
-
-  // Array of staff IDs
-  let staffArray = ["staff1","staff2","staff3","staff4"];
-
-  // Load deleted staff from localStorage
-  let deletedStaff = JSON.parse(localStorage.getItem("deletedStaff")) || [];
-
-  // Hide deleted staff on page load
-  deletedStaff.forEach(id => {
-    let element = document.querySelector(`[data-id="${id}"]`);
-    if(element) element.remove();
-  });
-
-  // Delete selected staff
-  document.getElementById("deleteBtn").addEventListener("click", function() {
-    const selected = staffArray.filter(id => {
-      const checkbox = document.getElementById(id);
-      return checkbox && checkbox.checked;
-    });
-
-    if(selected.length === 0){
-      alert("Please select at least one staff to delete.");
-      return;
     }
+});  
 
-    if(!confirm("Are you sure you want to delete this staff?")) return;
+        //-----------------------------------Aleen managestaff-----------------------------------
 
-    selected.forEach(id => {
-      const item = document.querySelector(`[data-id="${id}"]`);
-      if(item) item.remove();
-      if(!deletedStaff.includes(id)) deletedStaff.push(id);
-    });
 
-    localStorage.setItem("deletedStaff", JSON.stringify(deletedStaff));
-    alert("Staff deleted successfully!");
-  });
+        document.addEventListener("DOMContentLoaded", function () {
 
-  // Helper functions to validate input
-  function isValidName(name) {
-    return /^[a-zA-Z\s]+$/.test(name); // أحرف ومسافات فقط
-  }
+            // Array of staff IDs
+            let staffArray = ["staff1", "staff2", "staff3", "staff4"];
 
-  function isValidText(text) {
-    return /^[a-zA-Z0-9\s.,'-]+$/.test(text); // نصوص وأرقام ورموز بسيطة مسموح بها
-  }
+            // Load deleted staff from localStorage
+            let deletedStaff = JSON.parse(localStorage.getItem("deletedStaff")) || [];
 
-  // Add new staff
-  document.getElementById("addStaffForm").addEventListener("submit", function(e){
-    e.preventDefault();
+            // Hide deleted staff on page load
+            deletedStaff.forEach(id => {
+                let element = document.querySelector(`[data-id="${id}"]`);
+                if (element) element.remove();
+            });
 
-    const firstName = document.getElementById("first_nameZZ").value.trim();
-    const lastName  = document.getElementById("last_nameZZ").value.trim();
-    const email     = document.getElementById("emailZZ").value.trim();
-    const dob       = document.getElementById("dobZZ").value.trim();
-    const expertise = document.getElementById("expertiseZZ").value.trim();
+            // Delete selected staff
+            document.getElementById("deleteBtn").addEventListener("click", function () {
+                const selected = staffArray.filter(id => {
+                    const checkbox = document.getElementById(id);
+                    return checkbox && checkbox.checked;
+                });
 
-    // التحقق من الحقول الفارغة
-    if(!firstName || !lastName || !email || !dob || !expertise){
-      alert("Please fill in all required fields!");
-      return;
-    }
+                if (selected.length === 0) {
+                    alert("Please select at least one staff to delete.");
+                    return;
+                }
 
-    // تحقق من نوع البيانات
-    if(!isValidName(firstName)){
-      alert("First name should contain letters only!");
-      return;
-    }
+                if (!confirm("Are you sure you want to delete this staff?")) return;
 
-    if(!isValidName(lastName)){
-      alert("Last name should contain letters only!");
-      return;
-    }
+                selected.forEach(id => {
+                    const item = document.querySelector(`[data-id="${id}"]`);
+                    if (item) item.remove();
+                    if (!deletedStaff.includes(id)) deletedStaff.push(id);
+                });
 
-    if(!isValidText(expertise)){
-      alert("Expertise should be valid text!");
-      return;
-    }
+                localStorage.setItem("deletedStaff", JSON.stringify(deletedStaff));
+                alert("Staff deleted successfully!");
+            });
 
-    const staffList = document.querySelector(".staff-listZZ");
-    const newId = "staff" + (staffArray.length + 1);
-    staffArray.push(newId);
+            // Helper functions to validate input
+            function isValidName(name) {
+                return /^[a-zA-Z\s]+$/.test(name); // أحرف ومسافات فقط
+            }
 
-    const li = document.createElement("li");
-    li.className = "staff-itemZZ";
-    li.setAttribute("data-id", newId);
-    li.innerHTML = `
+            function isValidText(text) {
+                return /^[a-zA-Z0-9\s.,'-]+$/.test(text); // نصوص وأرقام ورموز بسيطة مسموح بها
+            }
+
+            // Add new staff
+            document.getElementById("addStaffForm").addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const firstName = document.getElementById("first_nameZZ").value.trim();
+                const lastName = document.getElementById("last_nameZZ").value.trim();
+                const email = document.getElementById("emailZZ").value.trim();
+                const dob = document.getElementById("dobZZ").value.trim();
+                const expertise = document.getElementById("expertiseZZ").value.trim();
+
+                // التحقق من الحقول الفارغة
+                if (!firstName || !lastName || !email || !dob || !expertise) {
+                    alert("Please fill in all required fields!");
+                    return;
+                }
+
+                // تحقق من نوع البيانات
+                if (!isValidName(firstName)) {
+                    alert("First name should contain letters only!");
+                    return;
+                }
+
+                if (!isValidName(lastName)) {
+                    alert("Last name should contain letters only!");
+                    return;
+                }
+
+                if (!isValidText(expertise)) {
+                    alert("Expertise should be valid text!");
+                    return;
+                }
+
+                const staffList = document.querySelector(".staff-listZZ");
+                const newId = "staff" + (staffArray.length + 1);
+                staffArray.push(newId);
+
+                const li = document.createElement("li");
+                li.className = "staff-itemZZ";
+                li.setAttribute("data-id", newId);
+                li.innerHTML = `
       <img src="images/default-profile.png" alt="${firstName}">
       <div class="staff-nameZZ">${firstName} ${lastName}</div>
       <div class="chk-wrapZZ"><input type="checkbox" id="${newId}"></div>
     `;
-    staffList.appendChild(li);
+                staffList.appendChild(li);
 
-    // Clear form
-    document.getElementById("first_nameZZ").value = "";
-    document.getElementById("last_nameZZ").value  = "";
-    document.getElementById("emailZZ").value      = "";
-    document.getElementById("dobZZ").value        = "";
-    document.getElementById("expertiseZZ").value  = "";
-    document.getElementById("skillsZZ").value     = "";
-    document.getElementById("educationZZ").value  = "";
-    document.getElementById("photoZZ").value      = "";
-  });
+                // Clear form
+                document.getElementById("first_nameZZ").value = "";
+                document.getElementById("last_nameZZ").value = "";
+                document.getElementById("emailZZ").value = "";
+                document.getElementById("dobZZ").value = "";
+                document.getElementById("expertiseZZ").value = "";
+                document.getElementById("skillsZZ").value = "";
+                document.getElementById("educationZZ").value = "";
+                document.getElementById("photoZZ").value = "";
+            });
 
-});
-
-
+        });
 
 
 
 
-//------------------------Aleen FAQ-------------------
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  const faqItems = document.querySelectorAll(".faq-item");
+        //------------------------Aleen FAQ-------------------
 
-  faqItems.forEach((item) => {
-    const question = item.querySelector(".faq-question");
-    const answer = item.querySelector(".faq-answer");
-    const icon = item.querySelector(".plus-icon");
 
-    question.addEventListener("click", () => {
-      // إغلاق كل الفتحات الأخرى
-      document.querySelectorAll(".faq-answer").forEach(ans => {
-        if (ans !== answer) {
-          ans.style.display = "none";
-        }
-      });
+        document.addEventListener("DOMContentLoaded", () => {
+            const faqItems = document.querySelectorAll(".faq-item");
 
-      document.querySelectorAll(".plus-icon").forEach(ic => {
-        if (ic !== icon) {
-          ic.classList.remove("open");
-        }
-      });
+            faqItems.forEach((item) => {
+                const question = item.querySelector(".faq-question");
+                const answer = item.querySelector(".faq-answer");
+                const icon = item.querySelector(".plus-icon");
 
-      // فتح/إغلاق الإجابة الحالية
-      if (answer.style.display === "block") {
-        answer.style.display = "none";
-        icon.classList.remove("open");
-      } else {
-        answer.style.display = "block";
-        icon.classList.add("open");
-      }
-    });
-  });
-});
+                question.addEventListener("click", () => {
+                    // إغلاق كل الفتحات الأخرى
+                    document.querySelectorAll(".faq-answer").forEach(ans => {
+                        if (ans !== answer) {
+                            ans.style.display = "none";
+                        }
+                    });
+
+                    document.querySelectorAll(".plus-icon").forEach(ic => {
+                        if (ic !== icon) {
+                            ic.classList.remove("open");
+                        }
+                    });
+
+                    // فتح/إغلاق الإجابة الحالية
+                    if (answer.style.display === "block") {
+                        answer.style.display = "none";
+                        icon.classList.remove("open");
+                    } else {
+                        answer.style.display = "block";
+                        icon.classList.add("open");
+                    }
+                });
+            });
+        });
+    
 
 
 
@@ -459,5 +467,4 @@ function addService_save(event) {
         if (btn) btn.addEventListener("click", addService_save);
 
 //=============================================================================
-
 
