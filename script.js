@@ -610,4 +610,75 @@ document.addEventListener("DOMContentLoaded", function () {
     // run the function when html is loaded
     window.addEventListener("DOMContentLoaded", provider_displayServices);
 
-// =============================================================================
+// ============================joud-addservice page==========================================
+function addService_save(event) {
+
+            // Stop page refresh so we can handle data saving 
+            event.preventDefault();
+
+           // get the service data and remove spaces from start/end
+            var addservice_name = document.getElementById("addService_name").value.trim();
+            var addservice_price = document.getElementById("addService_price").value.trim();
+            var addservice_desc = document.getElementById("addService_description").value.trim();
+            var fileInput = document.getElementById("addService_image");
+
+                // Check if any field is empty 
+            if (!addservice_name || !addservice_price || !addservice_desc || fileInput.files.length === 0) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+                // make sure service name not start with a number
+            if (/^[0-9]/.test(addservice_name)) {
+                alert("Service name cannot start with numbers.");
+                return;
+            }
+
+            //make sure price is a number
+            if (isNaN(addservice_price)) {
+                alert("Price must be a number.");
+                return;
+            }
+
+            // Convert the image file into a string to save it in localStorage
+            var file = fileInput.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+
+                 // create a new service object 
+                var newService = {
+                    name: addservice_name,
+                    price: addservice_price,
+                    description: addservice_desc,
+                    image: e.target.result   
+                };
+
+                // get old services from storage 
+                var old = localStorage.getItem("services");
+                var services = old ? JSON.parse(old) : [];
+
+                 // add the new service to the list
+                services.push(newService);
+
+                //save list to local storage 
+                localStorage.setItem("services", JSON.stringify(services));
+
+                alert("Service added successfully!");
+
+                // clear the form fields after saving
+                document.getElementById("addService_name").value = "";
+                document.getElementById("addService_price").value = "";
+                document.getElementById("addService_description").value = "";
+                document.getElementById("addService_image").value = "";
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+        // run only on add service page
+        var btn = document.getElementById("addService_button");
+        if (btn) btn.addEventListener("click", addService_save);
+
+//=============================================================================
+
