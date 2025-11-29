@@ -509,7 +509,7 @@
                     <textarea name="message"
                               id="sara_messageField_981"
                               rows="3"
-                              placeholder="Add a message (optional)"></textarea>
+                              placeholder="Add a message "></textarea>
                 </div>
             </div>
 
@@ -599,145 +599,183 @@
 
     <!-- ===== EMBEDDED VALIDATION SCRIPT ===== -->
     <script>
-        // =================== SARA - Join Our Team Form Validation (Updated) ===================
+    document.addEventListener("DOMContentLoaded", function () {
 
-        document.addEventListener("DOMContentLoaded", function () {
+        // نمسك الفورم حق "Join Our Team"
+        const form = document.querySelector(".form-card");
+        if (!form) return; // لو مو هذي الصفحة، لا نسوي شيء
 
-            // نمسك الفورم حق "Join Our Team"
-            const sara_form_master_981 = document.querySelector(".form-card");
-            if (!sara_form_master_981) {
-                return; // لو مو هذي الصفحة، لا نسوي شيء
-            }
+        // نطفي الـ autocomplete للفورم كله
+        form.setAttribute("autocomplete", "off");
 
-            // الحقول
-            const sara_input_first_981 = sara_form_master_981.querySelector("input[name='first_name']");
-            const sara_input_last_981 = sara_form_master_981.querySelector("input[name='last_name']");
-            const sara_input_email_981 = sara_form_master_981.querySelector("input[name='email']");
-            const sara_input_dob_981 = sara_form_master_981.querySelector("input[name='dob']");
-            const sara_input_expert_981 = sara_form_master_981.querySelector("input[name='expertise']");
-            const sara_input_skills_981 = sara_form_master_981.querySelector("input[name='skills']");
-            const sara_input_edu_981 = sara_form_master_981.querySelector("textarea[name='education']");
-            const sara_input_photo_981 = sara_form_master_981.querySelector("input[name='photo']");
-            const sara_input_message_981 = sara_form_master_981.querySelector("textarea[name='message']");
+        // نمسك الحقول
+        const firstName = form.querySelector("input[name='first_name']");
+        const lastName = form.querySelector("input[name='last_name']");
+        const email = form.querySelector("input[name='email']");
+        const dob = form.querySelector("input[name='dob']");
+        const expertise = form.querySelector("input[name='expertise']");
+        const skills = form.querySelector("input[name='skills']");
+        const education = form.querySelector("textarea[name='education']");
+        const photo = form.querySelector("input[name='photo']");
+        const message = form.querySelector("textarea[name='message']"); // صارت مطلوبة
 
-            // كل الحقول المطلوبة (Message مضافة هنا)
-            const sara_all_required_fields_981 = [
-                sara_input_first_981,
-                sara_input_last_981,
-                sara_input_email_981,
-                sara_input_dob_981,
-                sara_input_expert_981,
-                sara_input_skills_981,
-                sara_input_edu_981,
-                sara_input_message_981   // 🔴 Message صار REQUIRED
-            ];
+        // نخلي الإيميل type=text عشان ما يتعارض فالديشن المتصفح
+        // ونطفي الـ autocomplete عليه
+        if (email) {
+            email.setAttribute("type", "text");
+            email.setAttribute("autocomplete", "off");
+        }
 
-            // إلغاء فاليديشن الإيميل من المتصفح
-            if (sara_input_email_981) {
-                sara_input_email_981.setAttribute("type", "text");
-            }
+        // نخلي الماكس للـ DOB من الجافاسكربت
+        if (dob) {
+            dob.setAttribute("max", "2008-12-31");
+        }
 
-            // تحديد تاريخ الميلاد
-            if (sara_input_dob_981) {
-                sara_input_dob_981.setAttribute("max", "2008-12-31");
-            }
+        // الحقول المطلوبة (بما فيها message الآن)
+        const requiredFields = [
+            firstName,
+            lastName,
+            email,
+            dob,
+            expertise,
+            skills,
+            education,
+            message
+            // الصورة بنفحصها لوحدها
+        ];
 
-            // خريطة الرسائل
-            const sara_errors_map_981 = {};
+        // خريطة لرسائل الأخطاء
+        const errorMap = {};
 
-            // تنظيف الأخطاء
-            function sara_clear_all_errors_981() {
-                sara_all_required_fields_981.forEach(function (field) {
-                    if (field) field.style.border = "";
-                });
-                if (sara_input_photo_981) sara_input_photo_981.style.border = "";
-
-                Object.values(sara_errors_map_981).forEach(msg => msg.remove());
-                for (let k in sara_errors_map_981) delete sara_errors_map_981[k];
-            }
-
-            // إضافة خطأ لحقل معيّن
-            function sara_add_error_for_field_981(fieldElement, messageText) {
-                if (!fieldElement) return;
-
-                const key = fieldElement.name || Math.random().toString(36);
-
-                if (sara_errors_map_981[key]) sara_errors_map_981[key].remove();
-
-                fieldElement.style.border = "2px solid #d9534f";
-
-                const smallMsg = document.createElement("small");
-                smallMsg.textContent = messageText;
-                smallMsg.style.color = "#d9534f";
-                smallMsg.style.fontSize = "14px";
-                smallMsg.style.display = "block";
-                smallMsg.style.marginTop = "4px";
-
-                fieldElement.insertAdjacentElement("afterend", smallMsg);
-
-                sara_errors_map_981[key] = smallMsg;
-            }
-
-            // التحقق الأساسي
-            function sara_validate_join_form_981() {
-                let valid = true;
-
-                sara_clear_all_errors_981();
-
-                // فحص الحقول الفارغة
-                sara_all_required_fields_981.forEach(function (field) {
-                    if (field && field.value.trim() === "") {
-                        sara_add_error_for_field_981(field, "Please fill out this field.");
-                        valid = false;
-                    }
-                });
-
-                // first name لا يبدأ برقم
-                if (sara_input_first_981 && /^\d/.test(sara_input_first_981.value.trim())) {
-                    sara_add_error_for_field_981(sara_input_first_981, "First name cannot start with a number.");
-                    valid = false;
+        // دالة تمسح كل الأخطاء
+        function clearAllErrors() {
+            requiredFields.forEach(f => {
+                if (f) {
+                    f.style.border = "";
                 }
-
-                // last name لا يبدأ برقم
-                if (sara_input_last_981 && /^\d/.test(sara_input_last_981.value.trim())) {
-                    sara_add_error_for_field_981(sara_input_last_981, "Last name cannot start with a number.");
-                    valid = false;
-                }
-
-                // ايميل لازم يحتوي @
-                if (sara_input_email_981 && !sara_input_email_981.value.includes("@")) {
-                    sara_add_error_for_field_981(sara_input_email_981, "Please enter a valid email address (must contain '@').");
-                    valid = false;
-                }
-
-                // صورة مطلوبة
-                if (sara_input_photo_981.files.length === 0) {
-                    sara_add_error_for_field_981(sara_input_photo_981, "Please upload a photo.");
-                    valid = false;
-                }
-
-                return valid;
-            }
-
-            // عند الإرسال
-            sara_form_master_981.addEventListener("submit", function (event) {
-                event.preventDefault();
-
-                const allGood = sara_validate_join_form_981();
-                if (!allGood) return;
-
-                const fullName =
-                    (sara_input_first_981.value.trim() + " " + sara_input_last_981.value.trim()).trim();
-
-                alert(
-                    "Thank you, " + (fullName || "Applicant") +
-                    "! Your request to join Najdi Padel team has been submitted successfully."
-                );
-
-                sara_form_master_981.reset();
-                sara_clear_all_errors_981();
             });
+            if (photo) photo.style.border = "";
+
+            Object.values(errorMap).forEach(el => el && el.remove && el.remove());
+            for (let k in errorMap) delete errorMap[k];
+        }
+
+        // دالة تضيف رسالة خطأ تحت الحقل + تخلي البوردر أحمر
+        function addError(field, msg) {
+            if (!field) return;
+
+            const key = field.name || field.id || Math.random().toString(36);
+
+            if (errorMap[key]) {
+                errorMap[key].remove();
+            }
+
+            // نجبر البوردر يصير أحمر لنفس شكل باقي الحقول
+            field.style.setProperty("border", "2px solid #d9534f", "important");
+
+            const small = document.createElement("small");
+            small.textContent = msg;
+            small.style.color = "#d9534f";
+            small.style.fontSize = "14px";
+            small.style.display = "block";
+            small.style.marginTop = "4px";
+
+            field.insertAdjacentElement("afterend", small);
+            errorMap[key] = small;
+        }
+
+        // فحص كامل للفورم
+        function validateForm() {
+            let isValid = true;
+            clearAllErrors();
+
+            // 1) الحقول الفارغة
+            requiredFields.forEach(field => {
+                if (field && field.value.trim() === "") {
+                    addError(field, "Please fill out this field.");
+                    isValid = false;
+                }
+            });
+
+            // 2) first name لا يبدأ برقم
+            if (firstName && firstName.value.trim() !== "") {
+                const v = firstName.value.trim();
+                if (/^\d/.test(v)) {
+                    addError(firstName, "First name cannot start with a number.");
+                    isValid = false;
+                }
+            }
+
+            // 3) last name لا يبدأ برقم
+            if (lastName && lastName.value.trim() !== "") {
+                const v = lastName.value.trim();
+                if (/^\d/.test(v)) {
+                    addError(lastName, "Last name cannot start with a number.");
+                    isValid = false;
+                }
+            }
+
+            // 4) الإيميل:
+            //    - لو فاضي → نفس باقي الحقول
+            //    - لو مو فاضي وما فيه @ → مسج الصيغة
+            if (email) {
+                const v = email.value.trim();
+                if (v === "") {
+                    addError(email, "Please fill out this field.");
+                    isValid = false;
+                } else if (!v.includes("@")) {
+                    addError(email, "Please enter a valid email address (must contain '@').");
+                    isValid = false;
+                }
+            }
+
+            // 5) الصورة: مطلوبة + لازم تكون صورة
+            if (photo) {
+                if (photo.files.length === 0) {
+                    addError(photo, "Please upload a photo.");
+                    isValid = false;
+                } else {
+                    const file = photo.files[0];
+                    if (!file.type.startsWith("image/")) {
+                        addError(photo, "Only image files are allowed (JPG, PNG, etc.).");
+                        isValid = false;
+                    }
+                }
+            }
+
+            // 6) DOB: سنة 2008 أو أقل
+            if (dob && dob.value) {
+                const d = new Date(dob.value);
+                if (d.getFullYear() > 2008) {
+                    addError(dob, "DOB must be in 2008 or earlier.");
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        // حدث الإرسال
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const ok = validateForm();
+            if (!ok) return;
+
+            const fn = firstName ? firstName.value.trim() : "";
+            const ln = lastName ? lastName.value.trim() : "";
+            const fullName = (fn + " " + ln).trim() || "Applicant";
+
+            alert(
+                "Thank you, " +
+                fullName +
+                "! Your request to join Najdi Padel team has been submitted successfully."
+            );
+
+            form.reset();
+            clearAllErrors();
         });
+    });
     </script>
 
 
