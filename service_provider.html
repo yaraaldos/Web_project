@@ -557,113 +557,6 @@ body.dark .provider-swiper .swiper-button-next {
     
 
 
-
-<!-- _________________java script______________________ -->
-
-   <script>
-
-        //to loads and display all services from localStorage 
-        function provider_displayServices() {
-         
-        // get the string stored in localStorage and  save to services array
-        var stored = localStorage.getItem("services");
-        var services = stored ? JSON.parse(stored) : [];
-
-        // find the element that will hold all cards
-        var container = document.querySelector(".provider-cards");
-        if (!container) return;
-         
-        // clear the container before adding
-        container.innerHTML = "";
-
-        // get the if empty message 
-        var emptyMsg = document.getElementById("provider_emptyMessage");
-
-        //if there are no services stored:show message
-        if (services.length === 0) {
-            if (emptyMsg) emptyMsg.style.display = "block";
-            return;
-        }
-
-        //else:hide message
-        if (emptyMsg) emptyMsg.style.display = "none";
-
-        // create cards by looping through each service in services list
-        services.forEach(s => {
-
-            // create a new card <div> 
-            var card = document.createElement("div");
-            card.className = "provider-service-card swiper-slide";
-
-            // create <img> and set the image to the saved image then attach it inside the card
-            var img = document.createElement("img");
-            img.src = s.image;
-            card.appendChild(img);
-
-          
-            // add service name
-            var title = document.createElement("h3");
-            title.textContent = s.name;
-            card.appendChild(title);
-
-            // add service description and style
-            var desc = document.createElement("p");
-            desc.textContent = s.description;
-            desc.style.color = "#555";
-            desc.style.marginTop = "6px";
-            card.appendChild(desc);
-
-            //add the service price and style
-            var price = document.createElement("p");
-            price.textContent = s.price + " SR";
-            price.style.marginTop = "8px";
-            card.appendChild(price);
-
-            // append the card to the services container
-            container.appendChild(card);
-        });
-
-        // display Swiper depending on count
-        setTimeout(() => {
-            let count = services.length;
-
-            // if 4 or fewer cards :no arrows
-            if (count <= 4) {
-
-                document.querySelector(".swiper-button-next").style.display = "none";
-                document.querySelector(".swiper-button-prev").style.display = "none";
-                
-                container.style.justifyContent = "center";
-                new Swiper(".provider-swiper", {
-                    slidesPerView: count,
-                    spaceBetween: 30,
-                    allowTouchMove: false
-                });
-
-                return;
-            }
-
-            // if > 4 show arrows 
-            document.querySelector(".swiper-button-next").style.display = "block";
-            document.querySelector(".swiper-button-prev").style.display = "block";
-            container.style.justifyContent = "flex-start";
-            new Swiper(".provider-swiper", {
-                    slidesPerView: 4,
-                    spaceBetween: 10,
-
-        // enable arrow controls
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        }
-    });
-
-        }, 50); // Wait 50ms before
-    }
-
-    // run the function when html is loaded
-    window.addEventListener("DOMContentLoaded", provider_displayServices);
-   </script>
    
   <script src="script.js" defer></script>
  <!-- to scroll -->
@@ -675,3 +568,4 @@ body.dark .provider-swiper .swiper-button-next {
 
 
 </html>
+
